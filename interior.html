@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Interior - Casa Villa Zorzal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="/icons.png" type="image/x-icon">
+    <style>
+        .container-descarga {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+        }
+        .btn-descargar {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #2e7d32;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-descargar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            background-color: #1b5e20;
+        }
+        .btn-descargar i { margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div></div> <div class="nav-links"><a href="index.html" class="nav-btn">← Volver</a></div>
+    </nav>
+    <div class="container">
+        <h1 class="section-title">Comodidades Interiores</h1>
+        
+        <div class="grid-casas">
+            <div class="card">
+                <img src="/Estar y Comedor.jpg" alt="Estar y Comedor">
+                <div class="card-content">
+                    <h3>Estar y Comedor</h3>
+                    <p>Ambiente luminoso con TV y aire acondicionado para su confort.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/cocina.jpg" alt="Cocina">
+                <div class="card-content">
+                    <h3>Cocina Equipada</h3>
+                    <p>Totalmente equipada con cocina, microondas, pava eléctrica y lavarropas.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/Dormitorios.jpeg" alt="Dormitorios">
+                <div class="card-content">
+                    <h3>Dormitorios</h3>
+                    <p>Habitaciones confortables con ropa de cama incluida.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-icons" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;">
+            <div class="servicio-item"><i class="fas fa-wifi"></i><h3>Wi-Fi</h3><p>Conexión de alta velocidad en toda la casa.</p></div>
+            <div class="servicio-item"><i class="fas fa-snowflake"></i><h3>Climatización</h3><p>Aire acondicionado frío/calor en ambientes principales.</p></div>
+            <div class="servicio-item"><i class="fas fa-tshirt"></i><h3>Lavarropas</h3><p>Disponible para estancias prolongadas.</p></div>
+        </div>
+
+        <div class="container-descarga">
+            <a href="https://drive.google.com/file/d/1txOdVcBSudMQPtf5-_lO-ESi-DL0T4Ps/view?usp=sharing" class="btn-descargar" target="_blank">
+                <i class="fas fa-file-pdf"></i> Descargar (PDF) Informativo de Casa Villa Zorzal
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/casavillazorzal"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/casavillazorzal"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@casavillazorzal"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

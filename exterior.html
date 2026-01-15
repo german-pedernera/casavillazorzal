@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Exterior - Casa Villa Zorzal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="/icons.png" type="image/x-icon">
+    <style>
+        .container-descarga {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+        }
+        .btn-descargar {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #2e7d32; /* Verde acorde al sitio */
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-descargar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            background-color: #1b5e20;
+        }
+        .btn-descargar i { margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div></div> <div class="nav-links"><a href="index.html" class="nav-btn">← Volver</a></div>
+    </nav>
+    <div class="container">
+        <h1 class="section-title">Espacios al Aire Libre</h1>
+        
+        <div class="grid-casas">
+            <div class="card">
+                <img src="/frente.jpeg" alt="Vista Sierras">
+                <div class="card-content">
+                    <h3>Vista a las Sierras</h3>
+                    <p>Panorámica directa a los Comechingones desde el espacio verde.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/espacio verde.jpeg" alt="Parque">
+                <div class="card-content">
+                    <h3>Espacio Verde</h3>
+                    <p>Extenso jardín con vegetación autóctona y sombra natural.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/asador.jpeg" alt="Parrilla">
+                <div class="card-content">
+                    <h3>Zona de Asador</h3>
+                    <p>Espacio ideal para disfrutar de almuerzos al aire libre.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-icons" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;">
+            <div class="servicio-item"><i class="fas fa-fire-alt"></i><h3>Parrilla</h3><p>Zona de asador techada con todos los utensilios.</p></div>
+            <div class="servicio-item"><i class="fas fa-tree"></i><h3>Gran Espacio Verde</h3><p>Más de 420m2 de césped, casa de 52m2 cubierto y 27m2 de galería semicubiertos, cuenta con dos habitaciones, baño, cocina comedor.</p></div>
+            <div class="servicio-item"><i class="fas fa-car-side"></i><h3>Cochera</h3><p>Espacio cubierto para proteger su vehículo, con camara de seguridad periferica de exterior, monitoreada las 24 hs.</p></div>
+        </div>
+
+        <div class="container-descarga">
+            <a href=https://drive.google.com/file/d/1txOdVcBSudMQPtf5-_lO-ESi-DL0T4Ps/view?usp=sharing class="btn-descargar" target="_blank">
+                <i class="fas fa-file-pdf"></i> Descargar (PDF) Informativo de Casa Villa Zorzal
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/casavillazorzal"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/casavillazorzal"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@casavillazorzal"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
