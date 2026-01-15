@@ -3,124 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casa Villa Zorzal - Villa Larca</title>
+    <title>Bienvenidos - Casa Villa Zorzal</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="shortcut icon" href="/icons.png" type="image/x-icon">
     <style>
-        .servicios-fila-unica {
+        body { overflow: hidden; margin: 0; }
+        .welcome-wrapper {
+            height: 100vh;
             display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            overflow-x: auto;
-            padding: 20px 0;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 20px;
         }
-        .servicios-fila-unica .servicio-item { flex: 1; min-width: 140px; }
-        .modal-text-only { text-align: left; padding: 20px; line-height: 1.8; }
-        
-        .resena-turistica {
-            background: #ffffff;
-            padding: 40px 20px;
-            border-radius: 20px;
-            margin-bottom: 40px;
+        .welcome-logo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            box-shadow: var(--sombra-fuerte);
+            margin-bottom: 30px;
+            object-fit: cover;
+            animation: entradaSuave 1.5s ease-out, flotar 3s ease-in-out infinite;
+        }
+        .welcome-text { width: 100%; max-width: 900px; margin-bottom: 40px; }
+        .welcome-text h1 {
+            color: var(--oscuro);
+            font-size: clamp(1.5rem, 4.5vw, 3.5rem); 
+            margin-bottom: 15px;
+            font-weight: 700;
+            white-space: nowrap; 
+            overflow: hidden;
+        }
+        .btn-ingresar {
+            padding: 18px 50px;
+            background-color: var(--verde-principal);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
             box-shadow: var(--sombra-suave);
         }
-        .resena-turistica h2 { color: var(--verde-oscuro); margin-bottom: 15px; }
-        .resena-turistica p { font-size: 1.1rem; color: #555; max-width: 900px; margin: 0 auto 20px auto; }
+        .btn-ingresar:hover { transform: scale(1.1); background-color: var(--verde-oscuro); }
+        @keyframes entradaSuave {
+            0% { opacity: 0; transform: scale(0.5) translateY(-50px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="index.html" class="logo-contenedor">
-            <img src="logotipo.png" class="logo-img">
-            <span class="logo-name">Casa Villa Zorzal</span>
-        </a>
-        <div class="nav-links">
-            <a href="nosotros.html" class="nav-btn">Quiénes Somos</a>
-            <a href="contacto.html" class="nav-btn">Nuestro Contacto</a>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <h1 class="single-line">Tu descanso al pie de las Sierras</h1>
-        <p>"El refugio perfecto en el corazón de San Luis"</p>
-    </header>
-
-    <section class="container">
-        <div class="resena-turistica">
-            <h2>Descubrí la Magia de Villa Larca</h2>
+    <div class="welcome-wrapper">
+        <img src="logotipo.png" alt="Logo Casa Villa Zorzal" class="welcome-logo">
+        <div class="welcome-text">
+            <h1>Bienvenidos a Casa Villa Zorzal</h1>
             <p>
-                Ubicada en el corredor de la Costa de los Comechingones, Villa Larca es el secreto mejor guardado de San Luis. 
-                Aquí, el microclima se combina con paisajes vírgenes y arroyos cristalinos.
+                <i class="fas fa-leaf" style="color: var(--verde-principal); margin-right: 8px;"></i>
+                <b>Tu refugio de paz al pie de las Sierras de los Comechingones.</b>
             </p>
         </div>
-
-        <div class="grid-casas">
-            <a href="exterior.html" class="card">
-                <img src="/exterior.png" alt="Exterior">
-                <div class="card-content"><h3>Exterior</h3><p>Amplio espacio con vista directa a las sierras.</p></div>
-            </a>
-            <a href="interior.html" class="card">
-                <img src="/interior.jpg" alt="Interior">
-                <div class="card-content"><h3>Interior</h3><p>Confort total y equipamiento completo.</p></div>
-            </a>
-        </div>
-    </section>
-
-    <section class="container">
-        <h2>Servicios y Comodidades</h2>
-        <div class="servicios-fila-unica">
-            <div class="servicio-item" onclick="openModal('wifi')"><i class="fas fa-wifi"></i><p>Internet Wi-Fi</p></div>
-            <div class="servicio-item" onclick="openModal('seguridad')"><i class="fas fa-shield-alt"></i><p>Seguridad</p></div>
-            <div class="servicio-item" onclick="openModal('cochera')"><i class="fas fa-car"></i><p>Cochera Propia</p></div>
-            <div class="servicio-item" onclick="openModal('tv')"><i class="fas fa-tv"></i><p>Directv</p></div>
-            <div class="servicio-item" onclick="openModal('mascotas')"><i class="fas fa-paw"></i><p>Mascotas</p></div>
-            <div class="servicio-item" onclick="openModal('calefaccion')"><i class="fas fa-fire"></i><p>Calefacción</p></div>
-        </div>
-    </section>
-
-    <section class="container">
-        <h2>Turismo en Villa Larca</h2>
-        <div class="servicios-grid">
-            <div class="servicio-item" onclick="openTurismo('chorro')"><i class="fas fa-water"></i><p>Chorro San Ignacio</p></div>
-            <div class="servicio-item" onclick="openTurismo('piscu')"><i class="fas fa-umbrella-beach"></i><p>Dique Piscu Yaco</p></div>
-            <div class="servicio-item" onclick="openTurismo('papagayos')"><i class="fas fa-swimmer"></i><p>Ollas de Papagayos</p></div>
-            <div class="servicio-item" onclick="openTurismo('elena')"><i class="fas fa-leaf"></i><p>Cascada Villa Elena</p></div>
-            <div class="servicio-item" onclick="openTurismo('talar')"><i class="fas fa-tree"></i><p>Balneario El Talar</p></div>
-            <div class="servicio-item" onclick="openTurismo('pasos')"><i class="fas fa-hiking"></i><p>Pasos Malos</p></div>
-            <div class="servicio-item" onclick="openTurismo('tabaquillo')"><i class="fas fa-cloud-showers-heavy"></i><p>Salto Tabaquillo</p></div>
-            <div class="servicio-item" onclick="openTurismo('rincon')"><i class="fas fa-dove"></i><p>Rincón del Este</p></div>
-            <div class="servicio-item" onclick="openTurismo('sol')"><i class="fas fa-sun"></i><p>Mirador del Sol</p></div>
-            <div class="servicio-item" onclick="openTurismo('filo')"><i class="fas fa-cloud"></i><p>Filo Merlo</p></div>
-        </div>
-    </section>
-
-    <section class="container" style="background: #f0f4f8; padding: 50px 20px; border-radius: 20px; margin-bottom: 40px;">
-        <h2>Preguntas Frecuentes</h2>
-        <div class="servicios-grid">
-            <div class="servicio-item" onclick="openFAQ('horarios')"><i class="fas fa-clock"></i><p>Check-in / Out</p></div>
-            <div class="servicio-item" onclick="openFAQ('reserva')"><i class="fas fa-calendar-check"></i><p>¿Cómo reservar?</p></div>
-            <div class="servicio-item" onclick="openFAQ('capacidad')"><i class="fas fa-users"></i><p>Capacidad</p></div>
-            <div class="servicio-item" onclick="openFAQ('ubicacion')"><i class="fas fa-map-marked-alt"></i><p>¿Cómo llegar?</p></div>
-            <div class="servicio-item" onclick="openFAQ('pagos')"><i class="fas fa-credit-card"></i><p>Medios de Pago</p></div>
-        </div>
-    </section>
-
-    <div id="generalModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modalBody"></div>
-        </div>
+        <a href="/principal.html" class="btn-ingresar">Ingresar al Sitio Web</a>
     </div>
-
-    <footer>
-        <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
-        <div class="footer-socials">
-            <a href=https://www.instagram.com/casavillazorzal><i class="fab fa-instagram"></i></a>
-            <a href=https://www.facebook.com/casavillazorzal><i class="fab fa-facebook"></i></a>
-            <a href=https://www.tiktok.com/@casavillazorzal><i class="fab fa-tiktok"></i></a>
-        </div>
-    </footer>
-    <script src="script.js"></script>
 </body>
 </html>
