@@ -59,3 +59,185 @@ footer { background: var(--oscuro); color: white; padding: 40px; text-align: cen
 .quienes-somos-img { width: 180px; height: 180px; border-radius: 50%; margin-bottom: 25px; object-fit: cover; }
 .texto-justificado { text-align: justify; font-size: 1.1rem; line-height: 1.8; color: #444; }
 .btn-whatsapp { background: #25d366; color: white; border: none; padding: 15px 25px; border-radius: 50px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; margin: 10px; }
+
+/* --- Ajustes Globales de Responsividad --- */
+
+/* Asegura que las imágenes no se salgan de su contenedor */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Ajuste para la navegación */
+.navbar {
+    padding: 10px 15px;
+    flex-direction: column; /* Apila logo y botón en móviles */
+    gap: 10px;
+}
+
+/* Ajuste de Grillas (Servicios y Fotos) */
+.servicios-grid, .grid-casas, .grid-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 15px;
+    padding: 10px;
+}
+
+/* Contenedor principal */
+.container {
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Ajuste para el iframe de Google Maps */
+iframe {
+    width: 100% !important;
+    height: 300px !important; /* Más pequeño en móvil */
+}
+
+/* --- Media Queries específicos para Celulares --- */
+@media (max-width: 600px) {
+    /* Bienvenida */
+    .welcome-text h1 {
+        font-size: 1.8rem !important; /* Evita que el título se corte */
+        white-space: normal !important; /* Permite que el texto baje de línea */
+    }
+    
+    .welcome-logo {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Botones de WhatsApp */
+    .btn-whatsapp {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    /* Títulos de sección */
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Estilos base para el Hero */
+.hero {
+    padding: 60px 20px; /* Espaciado interno para que no toque los bordes */
+    text-align: center;
+    overflow: hidden; /* Evita desbordamientos */
+}
+
+.hero h1.single-line {
+    /* El uso de clamp permite que el tamaño sea dinámico */
+    /* Mínimo 1.8rem, tamaño ideal 5vw, máximo 3.5rem */
+    font-size: clamp(1.8rem, 5vw, 3.5rem); 
+    
+    margin-bottom: 10px;
+    line-height: 1.2;
+    
+    /* ¡IMPORTANTE! Cambia esto para que en móvil sí pueda bajar de línea si es necesario */
+    white-space: normal; 
+    word-wrap: break-word;
+}
+
+.hero p {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: #555; /* O el color que estés usando */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Ajuste específico para pantallas muy pequeñas (celulares) */
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 15px;
+    }
+    
+    .hero h1.single-line {
+        font-size: 1.7rem; /* Tamaño fijo de seguridad para móviles pequeños */
+    }
+}
+
+/* Aplicar a las clases de tus cuadrículas/grids */
+@media (max-width: 768px) {
+    .grid-turismo, 
+    .grid-faq,
+    .servicios-grid { /* Aseguramos consistencia con servicios */
+        display: flex !important; /* Cambia de cuadrícula a fila flexible */
+        overflow-x: auto !important; /* Activa el scroll horizontal */
+        scroll-snap-type: x mandatory; /* Hace que las tarjetas "encajen" al deslizar */
+        gap: 20px;
+        padding: 20px 10px;
+        -webkit-overflow-scrolling: touch; /* Suavidad en iOS */
+    }
+
+    /* Ajuste de las tarjetas individuales dentro del scroll */
+    .grid-turismo > div, 
+    .grid-faq > div,
+    .servicio-item {
+        flex: 0 0 80%; /* Cada tarjeta ocupa el 80% del ancho de la pantalla */
+        scroll-snap-align: center; /* Centra la tarjeta al deslizar */
+        min-width: 280px; /* Evita que se encojan demasiado */
+    }
+
+    /* Ocultar la barra de scroll para una estética más limpia (opcional) */
+    .grid-turismo::-webkit-scrollbar,
+    .grid-faq::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* --- Indicador de Deslizar para Celulares --- */
+@media (max-width: 768px) {
+    /* Creamos un contenedor relativo para las secciones de scroll */
+    .grid-turismo, 
+    .grid-faq {
+        position: relative;
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        gap: 15px;
+        padding-bottom: 20px;
+    }
+
+    /* El mensaje que aparece brevemente */
+    .grid-turismo::before,
+    .grid-faq::before {
+        content: "⟵ Desliza para ver más ⟶";
+        position: absolute;
+        top: -25px;
+        right: 10px;
+        font-size: 0.8rem;
+        color: var(--verde-principal);
+        font-weight: bold;
+        animation: fadeOut 4s forwards; /* Desaparece tras 4 segundos */
+        pointer-events: none;
+    }
+
+    /* Animación de las tarjetas al posicionar el dedo (simulando hover) */
+    .grid-turismo > div:active::after,
+    .grid-faq > div:active::after {
+        content: "Desliza lateralmente";
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.7rem;
+        z-index: 10;
+    }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 0; transform: translateY(5px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
