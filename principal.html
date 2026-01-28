@@ -28,18 +28,26 @@
         .resena-turistica h2 { color: var(--verde-oscuro); margin-bottom: 15px; }
         .resena-turistica p { font-size: 1.1rem; color: #555; max-width: 900px; margin: 0 auto 20px auto; }
     </style>
+        <script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+data-preference-id="1251901728-a7c5a23a-5f27-40ae-8eac-015f920e1cf7" data-source="button">
+</script>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="index.html" class="logo-contenedor">
-            <img src="logotipo.png" class="logo-img">
-            <span class="logo-name">Casa Villa Zorzal</span>
-        </a>
-        <div class="nav-links">
-            <a href="/nosotros.html" class="nav-btn"><i class="fas fa-users"></i> Quiénes Somos</a>
-            <a href="/contacto.html" class="nav-btn"><i class="fas fa-envelope"></i> Nuestro Contacto</a>
-        </div>
-    </nav>
+<nav class="navbar">
+    <a href="index.html" class="logo-contenedor">
+        <img src="logotipo.png" class="logo-img" alt="Logo">
+        <span class="logo-name">Casa Villa Zorzal</span>
+    </a>
+    
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+        <a href="nosotros.html" class="nav-btn">Quiénes Somos</a>
+        <a href="contacto.html" class="nav-btn">Nuestro Contacto</a>
+    </div>
+</nav>
 
     <header class="hero">
         <h1 class="single-line">Tu descanso al pie de las Sierras</h1>
@@ -67,45 +75,120 @@
         </div>
     </section>
 
-    <section class="container">
-        <h2>Servicios y Comodidades</h2>
-        <div class="servicios-fila-unica">
-            <div class="servicio-item" onclick="openModal('wifi')"><i class="fas fa-wifi"></i><p>Internet Wi-Fi</p></div>
-            <div class="servicio-item" onclick="openModal('seguridad')"><i class="fas fa-shield-alt"></i><p>Seguridad</p></div>
-            <div class="servicio-item" onclick="openModal('cochera')"><i class="fas fa-car"></i><p>Cochera Propia</p></div>
-            <div class="servicio-item" onclick="openModal('tv')"><i class="fas fa-tv"></i><p>Directv</p></div>
-            <div class="servicio-item" onclick="openModal('mascotas')"><i class="fas fa-paw"></i><p>Mascotas</p></div>
-            <div class="servicio-item" onclick="openModal('calefaccion')"><i class="fas fa-fire"></i><p>Calefacción</p></div>
-        </div>
-    </section>
+        <section class="container">
+            <h2>Servicios y Comodidades</h2>
+            <p style="max-width: 800px; margin: 0 auto 30px; color: #555;">
+                Diseñamos cada detalle para que tu única preocupación sea disfrutar. Combinamos el confort moderno con la serenidad de las sierras, asegurando una estadía sin preocupaciones tanto para el descanso como para el teletrabajo.
+            </p>
+            
+            <div class="servicios-grid">
+                <div class="servicio-item" onclick="openModal('wifi')">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Conexión Total</h3>
+                    <p>Wi-Fi de alta velocidad, ideal para videollamadas con la mejor vista de San Luis.</p>
+                </div>
+                <div class="servicio-item" onclick="openModal('seguridad')">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Tu Paz es Prioridad</h3>
+                    <p>Predio cerrado y monitoreado las 24 hs para una tranquilidad absoluta de tu familia.</p>
+                </div>
+                <div class="servicio-item" onclick="openModal('cochera')">
+                    <i class="fas fa-car"></i>
+                    <h3>Cochera Cubierta</h3>
+                    <p>Espacio privado y techado para proteger tu vehículo de cualquier clima.</p>
+                </div>
+                <div class="servicio-item" onclick="openModal('tv')">
+                    <i class="fas fa-tv"></i>
+                    <h3>Entretenimiento Full</h3>
+                    <p>Directv con packs de cine y deportes para disfrutar en familia al caer la tarde.</p>
+                </div>
+                <div class="servicio-item" onclick="openModal('mascotas')">
+                    <i class="fas fa-paw"></i>
+                    <h3>Toda la Familia</h3>
+                    <p>Somos pet-friendly; tus mascotas pequeñas son bienvenidas en nuestro gran jardín.</p>
+                </div>
+                <div class="servicio-item" onclick="openModal('calefaccion')">
+                    <i class="fas fa-fire"></i>
+                    <h3>Clima Perfecto</h3>
+                    <p>Ambientes cálidos y acogedores, perfectos para disfrutar de las sierras en cualquier estación.</p>
+                </div>
+            </div>
+        </section>
 
-    <section class="container">
-        <h2>Turismo en Villa Larca</h2>
-        <div class="servicios-grid">
-            <div class="servicio-item" onclick="openTurismo('chorro')"><i class="fas fa-water"></i><p>Chorro San Ignacio</p></div>
-            <div class="servicio-item" onclick="openTurismo('piscu')"><i class="fas fa-umbrella-beach"></i><p>Dique Piscu Yaco</p></div>
-            <div class="servicio-item" onclick="openTurismo('papagayos')"><i class="fas fa-swimmer"></i><p>Ollas de Papagayos</p></div>
-            <div class="servicio-item" onclick="openTurismo('elena')"><i class="fas fa-leaf"></i><p>Cascada Villa Elena</p></div>
-            <div class="servicio-item" onclick="openTurismo('talar')"><i class="fas fa-tree"></i><p>Balneario El Talar</p></div>
-            <div class="servicio-item" onclick="openTurismo('pasos')"><i class="fas fa-hiking"></i><p>Pasos Malos</p></div>
-            <div class="servicio-item" onclick="openTurismo('tabaquillo')"><i class="fas fa-cloud-showers-heavy"></i><p>Salto Tabaquillo</p></div>
-            <div class="servicio-item" onclick="openTurismo('rincon')"><i class="fas fa-dove"></i><p>Rincón del Este</p></div>
-            <div class="servicio-item" onclick="openTurismo('sol')"><i class="fas fa-sun"></i><p>Mirador del Sol</p></div>
-            <div class="servicio-item" onclick="openTurismo('filo')"><i class="fas fa-cloud"></i><p>Filo Merlo</p></div>
+            <section class="container">
+    <h2>Turismo en Villa Larca</h2>
+    <p style="max-width: 800px; margin: 0 auto 30px; color: #555;">
+        Explora los tesoros naturales a pocos minutos de nuestra ubicación estratégica.
+    </p>
+    
+    <div class="servicios-grid">
+        <div class="servicio-item" onclick="openTurismo('chorro')">
+            <i class="fas fa-water"></i>
+            <h3>Chorro San Ignacio</h3>
+            <p>Cascada natural a 2 km, el corazón de Villa Larca.</p>
         </div>
-    </section>
-
-    <section class="container" style="background: #f0f4f8; padding: 50px 20px; border-radius: 20px; margin-bottom: 40px;">
-        <h2>Preguntas Frecuentes</h2>
-        <div class="servicios-grid">
-            <div class="servicio-item" onclick="openFAQ('horarios')"><i class="fas fa-clock"></i><p>Check-in / Out</p></div>
-            <div class="servicio-item" onclick="openFAQ('reserva')"><i class="fas fa-calendar-check"></i><p>¿Cómo reservar?</p></div>
-            <div class="servicio-item" onclick="openFAQ('capacidad')"><i class="fas fa-users"></i><p>Capacidad</p></div>
-            <div class="servicio-item" onclick="openFAQ('ubicacion')"><i class="fas fa-map-marked-alt"></i><p>¿Cómo llegar?</p></div>
-            <div class="servicio-item" onclick="openFAQ('pagos')"><i class="fas fa-credit-card"></i><p>Medios de Pago</p></div>
+        <div class="servicio-item" onclick="openTurismo('piscu')">
+            <i class="fas fa-umbrella-beach"></i>
+            <h3>Dique Piscu Yaco</h3>
+            <p>Playas de arena ideales para actividades náuticas.</p>
         </div>
-    </section>
+        <div class="servicio-item" onclick="openTurismo('papagayos')">
+            <i class="fas fa-swimmer"></i>
+            <h3>Ollas de Papagayos</h3>
+            <p>Pozones cristalinos rodeados de palmeras caranday.</p>
+        </div>
+        <div class="servicio-item" onclick="openTurismo('elena')">
+            <i class="fas fa-mountain"></i>
+            <h3>Cascada Villa Elena</h3>
+            <p>Salto de agua de 9 metros en una reserva natural.</p>
+        </div>
+        <div class="servicio-item" onclick="openTurismo('talar')">
+            <i class="fas fa-leaf"></i>
+            <h3>Balneario El Talar</h3>
+            <p>Aguas cristalinas bajo frondosa arboleda autóctona.</p>
+        </div>
+        <div class="servicio-item" onclick="openTurismo('pasos')">
+            <i class="fas fa-utensils"></i>
+            <h3>Pasos Malos</h3>
+            <p>Circuito emblemático con vistas y polo gastronómico.</p>
+        </div>
+    </div>
+</section>
 
+            <section class="container" style="background: #f0f4f8; padding: 50px 20px; border-radius: 20px; margin-bottom: 40px;">
+    <h2>Preguntas Frecuentes</h2>
+    <p style="max-width: 800px; margin: 0 auto 30px; color: #555;">
+        Todo lo que necesitas saber para planificar tu estadía perfecta.
+    </p>
+    
+    <div class="servicios-grid">
+        <div class="servicio-item" onclick="openFAQ('horarios')">
+            <i class="fas fa-clock"></i>
+            <h3>Flexibilidad</h3>
+            <p>Consulta nuestros horarios de Check-in y Check-out.</p>
+        </div>
+        <div class="servicio-item" onclick="openFAQ('reserva')">
+            <i class="fas fa-calendar-check"></i>
+            <h3>Reserva Simple</h3>
+            <p>Proceso transparente mediante transferencia bancaria.</p>
+        </div>
+        <div class="servicio-item" onclick="openFAQ('capacidad')">
+            <i class="fas fa-users"></i>
+            <h3>Tu Grupo</h3>
+            <p>Capacidad máxima para 6 personas con total comodidad.</p>
+        </div>
+        <div class="servicio-item" onclick="openFAQ('ubicacion')">
+            <i class="fas fa-map-marked-alt"></i>
+            <h3>Cómo llegar</h3>
+            <p>Ubicación sobre calle Sobremonte a 3 cuadras de RP1.</p>
+        </div>
+        <div class="servicio-item" onclick="openFAQ('pagos')">
+            <i class="fas fa-credit-card"></i>
+            <h3>Medios de Pago</h3>
+            <p>Efectivo, transferencias bancarias y Mercado Pago.</p>
+        </div>
+    </div>
+</section>
     <div id="generalModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -113,14 +196,65 @@
         </div>
     </div>
 
-    <footer>
-        <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
-        <div class="footer-socials">
-            <a href=https://www.instagram.com/casavillazorzal><i class="fab fa-instagram"></i></a>
-            <a href=https://www.facebook.com/casavillazorzal><i class="fab fa-facebook"></i></a>
-            <a href=https://www.tiktok.com/@casavillazorzal><i class="fab fa-tiktok"></i></a>
+<section class="container reserva-estadia" style="background: white; padding: 50px 20px; border-radius: 20px; margin-bottom: 40px; box-shadow: var(--sombra-suave); text-align: center;">
+    <h2 style="color: var(--verde-oscuro); margin-bottom: 15px;">Reserva y asegurate tu estadía</h2>
+    
+    <div style="max-width: 600px; margin: 0 auto;">
+        <p style="font-size: 1.2rem; color: #2c3e50; font-weight: 600; margin-bottom: 10px;">
+            ¡Estás a un paso de vivir una experiencia única!
+        </p>
+        
+        <p style="font-size: 1.1rem; color: #27ae60; background: #f0fdf4; padding: 15px; border-radius: 10px; border: 1px solid var(--verde-principal); margin-bottom: 20px;">
+            <i class="fas fa-tag"></i> <b>Contamos con uno de los mejores precios en la zona:</b><br>
+            El valor por noche es de <b>$65.000</b>.
+        </p>
+
+        <p style="font-size: 1rem; color: #666; margin-bottom: 30px;">
+            Reserva ahora abonando el <b>40% del total del total de noches a hospedarse</b> a través de Mercado Pago para asegurar tu fecha.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
+            <a href="https://link.mercadopago.com.ar/tiendaelectromania" target="_blank" class="btn-pago-mp" style="background: #009ee3; color: white; text-decoration: none; padding: 18px 40px; border-radius: 50px; font-weight: 700; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; box-shadow: 0 4px 15px rgba(0, 158, 227, 0.3); width: 100%; max-width: 400px; justify-content: center;">
+                <i class="fas fa-credit-card"></i> Pagar con Mercado Pago
+            </a>
+
+            <button onclick="openWhatsAppModal()" style="background: #25d366; color: white; border: none; padding: 15px 30px; border-radius: 50px; font-weight: 600; font-size: 1.1rem; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; width: 100%; max-width: 400px; justify-content: center;">
+                <i class="fab fa-whatsapp"></i> Enviar Comprobante de Pago
+            </button>
         </div>
-    </footer>
+    </div>
+</section>
+
+<footer>
+    <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
+    <div class="footer-socials">
+        <a href="https://www.instagram.com/casavillazorzal" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/casavillazorzal" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.tiktok.com/@casavillazorzal" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="javascript:void(0)" onclick="openWhatsAppModal()">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+</footer>
+
+<div id="whatsappModal" class="modal">
+    <div class="modal-content" style="max-width: 400px; text-align: center;">
+        <span class="close" onclick="closeWhatsAppModal()">&times;</span>
+        <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 15px;"></i>
+        <h3>¿Con quién deseas hablar?</h3>
+        <p style="margin-bottom: 20px; color: #666;">Elige un contacto para iniciar el chat:</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <a href="https://wa.me/+5493513603703" target="_blank" class="btn-ingresar" style="background-color: #25d366; font-size: 1.1rem; padding: 12px;">
+                <i class="fas fa-user"></i> Chatear con Claudia
+            </a>
+            <a href="https://wa.me/+5491169534244" target="_blank" class="btn-ingresar" style="background-color: #128c7e; font-size: 1.1rem; padding: 12px;">
+                <i class="fas fa-user"></i> Chatear con German
+            </a>
+        </div>
+    </div>
+</div>
     <script src="script.js"></script>
+
 </body>
 </html>

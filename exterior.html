@@ -33,9 +33,23 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div></div> <div class="nav-links"><a href="/principal.html" class="nav-btn">← ← ← Volver al Inicio</a></div>
-    </nav>
+<nav class="navbar">
+    <a href="index.html" class="logo-contenedor">
+        <img src="logotipo.png" class="logo-img" alt="Logo">
+        <span class="logo-name">Casa Villa Zorzal</span>
+    </a>
+    
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+        <a href="nosotros.html" class="nav-btn">Quiénes Somos</a>
+        <a href="/contacto.html" class="nav-btn">Nuestro Contacto</a>
+        <a href="interior.html" class="nav-btn">Interior</a>
+        <a href="principal.html" class="nav-btn">Inicio</a>
+    </div>
+</nav>
     <div class="container">
         <h1 class="section-title">Espacios al Aire Libre</h1>
         
@@ -76,14 +90,35 @@
         </div>
     </div>
 
-    <footer>
-        <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
-        <div class="footer-socials">
-            <a href="https://www.instagram.com/casavillazorzal"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/casavillazorzal"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.tiktok.com/@casavillazorzal"><i class="fab fa-tiktok"></i></a>
+<footer>
+    <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
+    <div class="footer-socials">
+        <a href="https://www.instagram.com/casavillazorzal" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/casavillazorzal" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.tiktok.com/@casavillazorzal" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="javascript:void(0)" onclick="openWhatsAppModal()">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+</footer>
+
+<div id="whatsappModal" class="modal">
+    <div class="modal-content" style="max-width: 400px; text-align: center;">
+        <span class="close" onclick="closeWhatsAppModal()">&times;</span>
+        <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 15px;"></i>
+        <h3>¿Con quién deseas hablar?</h3>
+        <p style="margin-bottom: 20px; color: #666;">Elige un contacto para iniciar el chat:</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <a href="https://wa.me/+5493513603703" target="_blank" class="btn-ingresar" style="background-color: #25d366; font-size: 1.1rem; padding: 12px;">
+                <i class="fas fa-user"></i> Chatear con Claudia
+            </a>
+            <a href="https://wa.me/+5491169534244" target="_blank" class="btn-ingresar" style="background-color: #128c7e; font-size: 1.1rem; padding: 12px;">
+                <i class="fas fa-user"></i> Chatear con German
+            </a>
         </div>
-    </footer>
+    </div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>

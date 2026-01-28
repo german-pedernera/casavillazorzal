@@ -1,3 +1,4 @@
+/* --- CONFIGURACIÓN DE INFORMACIÓN PARA MODALES --- */
 const modalesInfo = {
     wifi: `<div class="modal-text-only"><h3>WiFi de Alta Velocidad</h3><p>Conexión estable por transmisión inalámbrica, ideal para streaming y teletrabajo con la mejor vista.</p></div>`,
     seguridad: `<div class="modal-text-only"><h3>Seguridad 24hs</h3><p>Predio totalmente cerrado con alambrado, monitoreado para su absoluta tranquilidad.</p></div>`,
@@ -16,18 +17,21 @@ const faqInfo = {
 };
 
 const turismoInfo = {
-    chorro: { titulo: "Chorro San Ignacio", res: "El Chorro de San Ignacio es una cascada que nace de entre las Sierras de Comechingones, ubicada entre las localidades argentinas de Villa Larca y Papagayos del Departamento Chacabuco, Provincia de San Luis. Se ubica a 2 km hacia las sierras desde la RP1 de San Luis .", dist: "2 km" },
-    piscu: { titulo: "Dique Piscu Yaco", res: "Espejo de agua con playas de arena, ideal para actividades náuticas sin motor, Su nombre en lengua comechingona significa Aguada de los Pájaros", dist: "15 km" },
-    papagayos: { titulo: "Ollas de Papagayos", res: "Pozones naturales de agua cristalina rodeados de la flora autóctona de la zona. Las 8 Ollas: El arroyo cuenta con una serie de 8 piletas naturales de distintas profundidades.", dist: "12 km" },
-    elena: { titulo: "Cascada Villa Elena", res: "La Cascada Esmeralda (conocida comúnmente como Cascada de Villa Elena) se encuentra en la Reserva Natural Quebrada de Villa Elena, en la localidad de Cortaderas, provincia de San Luis. Se caracteriza por un salto de agua de aproximadamente 9 metros de altura y una pileta natural (olla) de unos 4 metros de profundidad.", dist: "18 km" },
-    talar: { titulo: "Balneario El Talar", res: "El Balneario El Talar es un oasis de aguas cristalinas ubicado en la localidad de Los Molles, a unos 12 km al sur de Merlo. Se destaca por sus pozas naturales formadas por el Arroyo Los Molles bajo una frondosa arboleda de talas y algarrobos.", dist: "22 km" },
-    pasos: { titulo: "Pasos Malos", res: "Pasos Malos es uno de los circuitos turísticos más emblemáticos e imperdibles de la Villa de Merlo, en la provincia de San Luis. Se destaca por su belleza natural, un importante polo gastronómico y la historia detrás de su nombre", dist: "38 km" },
-    tabaquillo: { titulo: "Salto Tabaquillo", res: "Aventura de trekking, El Salto del Talar o Salto del Tabaquillo es la cascada más emblemática de la Villa de Merlo. Con una caída libre de 18 metros, se encuentra en el corazón de la Reserva Natural Municipal Rincón del Este.", dist: "40 km" },
-    rincon: { titulo: "Rincón del Este", res: "Reserva natural con senderos para avistaje de aves y contacto directo con la paz serrana. La Reserva Florofaunística Rincón del Este es el pulmón verde de la Villa de Merlo, situada al pie de las Sierras de los Comechingones, al final de la Avenida de los Césares. Es el punto de partida para las aventuras de montaña más importantes de la zona. ", dist: "36 km" },
-    sol: { titulo: "Mirador del Sol", res: "El Mirador del Sol es uno de los puntos panorámicos más destacados de la Villa de Merlo, ubicado a 1.470 metros sobre el nivel del mar en el camino hacia el Filo Serrano. Ofrece una vista imponente del Valle del Conlara y es un lugar popular para ver la puesta del sol. ", dist: "42 km" },
-    filo: { titulo: "Filo Merlo", res: "El Filo Serrano (o simplemente El Filo) es el punto más alto del circuito turístico de Merlo al que se puede acceder en auto, ubicado a más de 2.100 metros sobre el nivel del mar en el límite entre las provincias de San Luis y Córdoba. Es famoso por ofrecer vistas panorámicas inigualables del Valle del Conlara y por ser el mejor lugar para observar el atardecer.", dist: "48 km" }
+    chorro: { titulo: "Chorro San Ignacio", res: "Cascada natural que nace de las Sierras de Comechingones, ubicada a 2 km hacia las sierras desde la RP1.", dist: "2 km" },
+    piscu: { titulo: "Dique Piscu Yaco", res: "Espejo de agua con playas de arena, ideal para actividades náuticas sin motor.", dist: "15 km" },
+    papagayos: { titulo: "Ollas de Papagayos", res: "Pozones naturales de agua cristalina rodeados de flora autóctona y palmeras caranday.", dist: "12 km" },
+    elena: { titulo: "Cascada Villa Elena", res: "Salto de agua de 9 metros en la Reserva Natural Quebrada de Villa Elena.", dist: "18 km" },
+    talar: { titulo: "Balneario El Talar", res: "Oasis de aguas cristalinas ubicado en Los Molles, bajo frondosa arboleda de talas.", dist: "22 km" },
+    pasos: { titulo: "Pasos Malos", res: "Circuito gastronómico y natural emblemático de la Villa de Merlo.", dist: "38 km" }
 };
 
+/* --- FUNCIONES DE NAVEGACIÓN (MENÚ HAMBURGUESA) --- */
+function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+}
+
+/* --- FUNCIONES DE MODALES GENERALES --- */
 function openModal(service) {
     document.getElementById('modalBody').innerHTML = modalesInfo[service];
     document.getElementById('generalModal').style.display = "block";
@@ -57,8 +61,84 @@ function closeModal() {
     document.body.style.overflow = "auto";
 }
 
-window.onclick = function(event) {
-    if (event.target == document.getElementById('generalModal')) {
-        closeModal();
+/* --- FUNCIONES DE WHATSAPP --- */
+function openWhatsAppModal() {
+    document.getElementById('whatsappModal').style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+function closeWhatsAppModal() {
+    document.getElementById('whatsappModal').style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+/* --- LÓGICA DE RESERVA Y ESTADÍA --- */
+
+// Calcula las noches entre entrada y salida
+function calcularNoches() {
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const nochesInput = document.getElementById('cantNoches');
+
+    if (checkin && checkout) {
+        const fechaEntrada = new Date(checkin);
+        const fechaSalida = new Date(checkout);
+        const diferenciaMilisegundos = fechaSalida - fechaEntrada;
+        const noches = Math.ceil(diferenciaMilisegundos / (1000 * 60 * 60 * 24));
+
+        if (noches > 0) {
+            nochesInput.value = noches;
+        } else {
+            alert("La fecha de salida debe ser posterior a la de entrada.");
+            document.getElementById('checkout').value = "";
+            nochesInput.value = "0";
+        }
     }
+}
+
+// Controla los contadores (+/-) y la capacidad máxima de 6 personas
+function cambiarCantidad(id, valor) {
+    const input = document.getElementById(id);
+    let cantidadActual = parseInt(input.value);
+    
+    if (cantidadActual + valor >= 0) {
+        if (id === 'adultos' || id === 'niños') {
+            const adultos = parseInt(document.getElementById('adultos').value);
+            const niños = parseInt(document.getElementById('niños').value);
+            const totalHuespedes = (id === 'adultos' ? adultos + valor : adultos) + (id === 'niños' ? niños + valor : niños);
+            
+            if (valor > 0 && totalHuespedes > 6) {
+                alert("La capacidad máxima permitida es de 6 personas.");
+                return;
+            }
+        }
+        input.value = cantidadActual + valor;
+    }
+}
+
+// Valida datos y redirige a Mercado Pago
+function validarYEnviarReserva() {
+    const nombre = document.getElementById('nombreReserva').value;
+    const email = document.getElementById('emailReserva').value;
+    const tel = document.getElementById('telReserva').value;
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const noches = document.getElementById('cantNoches').value;
+
+    if (!nombre || !email || !tel || !checkin || !checkout || noches <= 0) {
+        alert("Por favor, completa todos los campos obligatorios (*) y selecciona fechas válidas.");
+        return;
+    }
+
+    // Reemplazar por tu Link de Pago real generado en Mercado Pago
+    const linkPago = "https://mpago.la/2CuV2Rz";
+    window.location.href = linkPago;
+}
+
+/* --- CIERRE DE MODALES AL HACER CLIC FUERA --- */
+window.onclick = function(event) {
+    const modal = document.getElementById('whatsappModal');
+    const generalModal = document.getElementById('generalModal');
+    if (event.target == modal) closeWhatsAppModal();
+    if (event.target == generalModal) closeModal();
 }

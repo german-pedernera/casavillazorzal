@@ -20,7 +20,7 @@ body { background-color: var(--gris-fondo); color: #333; line-height: 1.6; }
 .logo-contenedor { display: flex; align-items: center; text-decoration: none; color: var(--oscuro); }
 .logo-img { height: 80px; width: 80px; border-radius: 50%; margin-right: 15px; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .logo-name { font-weight: 600; font-size: 1.4rem; }
-.nav-links { display: flex; gap: 15px; margin-left: auto; } /* Alineación forzada a la derecha */
+.nav-links { display: flex; gap: 15px; margin-left: auto; }
 .nav-btn { text-decoration: none; color: var(--oscuro); font-weight: 600; padding: 10px 15px; border-radius: 8px; transition: 0.3s; }
 .nav-btn:hover { background: #f0f0f0; color: var(--verde-principal); }
 
@@ -46,204 +46,328 @@ body { background-color: var(--gris-fondo); color: #333; line-height: 1.6; }
 .servicio-item:hover { transform: translateY(-5px); box-shadow: var(--sombra-fuerte); }
 .servicio-item i { font-size: 2.5rem; color: var(--verde-principal); margin-bottom: 10px; }
 
+/* --- MODALES Y BOTONES DE WHATSAPP (CORREGIDO) --- */
 .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
 .modal-content { background: white; margin: 5% auto; padding: 25px; border-radius: 15px; width: 90%; max-width: 600px; text-align: center; position: relative; animation: fadeIn 0.3s; }
+
+/* Quitar subrayado de botones dentro del modal */
+.modal-content a { text-decoration: none !important; }
+
+.btn-whatsapp { 
+    background: #25d366; 
+    color: white; 
+    border: none; 
+    padding: 15px 25px; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    text-decoration: none !important; /* Corregido */
+    display: inline-flex; 
+    align-items: center; 
+    gap: 10px; 
+    margin: 10px; 
+}
+
+.btn-ingresar {
+    padding: 18px 50px;
+    background-color: var(--verde-principal);
+    color: white;
+    text-decoration: none !important; /* Corregido */
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--sombra-suave);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 .close { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; color: #888; }
 
+/* --- Footer --- */
 footer { background: var(--oscuro); color: white; padding: 40px; text-align: center; }
 .footer-socials { margin-top: 20px; display: flex; justify-content: center; gap: 25px; }
-.footer-socials a { color: white; font-size: 1.8rem; transition: transform 0.3s, color 0.3s; }
+.footer-socials a { color: white; font-size: 1.8rem; transition: transform 0.3s, color 0.3s; text-decoration: none !important; } /* Corregido */
 .footer-socials a:hover { color: var(--verde-principal); transform: translateY(-5px); }
 
 .quienes-somos-img { width: 180px; height: 180px; border-radius: 50%; margin-bottom: 25px; object-fit: cover; }
 .texto-justificado { text-align: justify; font-size: 1.1rem; line-height: 1.8; color: #444; }
-.btn-whatsapp { background: #25d366; color: white; border: none; padding: 15px 25px; border-radius: 50px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; margin: 10px; }
 
-/* --- Ajustes Globales de Responsividad --- */
+/* --- Responsividad --- */
+img { max-width: 100%; height: auto; }
 
-/* Asegura que las imágenes no se salgan de su contenedor */
-img {
-    max-width: 100%;
-    height: auto;
-}
+.navbar { padding: 10px 15px; flex-direction: column; gap: 10px; }
 
-/* Ajuste para la navegación */
-.navbar {
-    padding: 10px 15px;
-    flex-direction: column; /* Apila logo y botón en móviles */
-    gap: 10px;
-}
-
-/* Ajuste de Grillas (Servicios y Fotos) */
-.servicios-grid, .grid-casas, .grid-icons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 15px;
-    padding: 10px;
-}
-
-/* Contenedor principal */
-.container {
-    padding: 15px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* Ajuste para el iframe de Google Maps */
-iframe {
-    width: 100% !important;
-    height: 300px !important; /* Más pequeño en móvil */
-}
-
-/* --- Media Queries específicos para Celulares --- */
 @media (max-width: 600px) {
-    /* Bienvenida */
-    .welcome-text h1 {
-        font-size: 1.8rem !important; /* Evita que el título se corte */
-        white-space: normal !important; /* Permite que el texto baje de línea */
-    }
-    
-    .welcome-logo {
-        width: 150px;
-        height: 150px;
-    }
-
-    /* Botones de WhatsApp */
-    .btn-whatsapp {
-        display: block;
-        width: 100%;
-        margin-bottom: 10px;
-        box-sizing: border-box;
-        text-align: center;
-    }
-
-    /* Títulos de sección */
-    h1 {
-        font-size: 1.5rem;
-    }
+    .welcome-text h1 { font-size: 1.8rem !important; white-space: normal !important; }
+    .welcome-logo { width: 150px; height: 150px; }
+    .btn-whatsapp { display: block; width: 100%; margin-bottom: 10px; box-sizing: border-box; text-align: center; }
+    h1 { font-size: 1.5rem; }
+    iframe { width: 100% !important; height: 300px !important; }
 }
 
-/* Estilos base para el Hero */
-.hero {
-    padding: 60px 20px; /* Espaciado interno para que no toque los bordes */
-    text-align: center;
-    overflow: hidden; /* Evita desbordamientos */
-}
+.hero { padding: 60px 20px; overflow: hidden; }
+.hero h1.single-line { font-size: clamp(1.8rem, 5vw, 3.5rem); margin-bottom: 10px; line-height: 1.2; white-space: normal; word-wrap: break-word; }
 
-.hero h1.single-line {
-    /* El uso de clamp permite que el tamaño sea dinámico */
-    /* Mínimo 1.8rem, tamaño ideal 5vw, máximo 3.5rem */
-    font-size: clamp(1.8rem, 5vw, 3.5rem); 
-    
-    margin-bottom: 10px;
-    line-height: 1.2;
-    
-    /* ¡IMPORTANTE! Cambia esto para que en móvil sí pueda bajar de línea si es necesario */
-    white-space: normal; 
-    word-wrap: break-word;
-}
-
-.hero p {
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    color: #555; /* O el color que estés usando */
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Ajuste específico para pantallas muy pequeñas (celulares) */
-@media (max-width: 480px) {
-    .hero {
-        padding: 40px 15px;
-    }
-    
-    .hero h1.single-line {
-        font-size: 1.7rem; /* Tamaño fijo de seguridad para móviles pequeños */
-    }
-}
-
-/* Aplicar a las clases de tus cuadrículas/grids */
 @media (max-width: 768px) {
-    .grid-turismo, 
-    .grid-faq,
-    .servicios-grid { /* Aseguramos consistencia con servicios */
-        display: flex !important; /* Cambia de cuadrícula a fila flexible */
-        overflow-x: auto !important; /* Activa el scroll horizontal */
-        scroll-snap-type: x mandatory; /* Hace que las tarjetas "encajen" al deslizar */
-        gap: 20px;
-        padding: 20px 10px;
-        -webkit-overflow-scrolling: touch; /* Suavidad en iOS */
-    }
-
-    /* Ajuste de las tarjetas individuales dentro del scroll */
-    .grid-turismo > div, 
-    .grid-faq > div,
-    .servicio-item {
-        flex: 0 0 80%; /* Cada tarjeta ocupa el 80% del ancho de la pantalla */
-        scroll-snap-align: center; /* Centra la tarjeta al deslizar */
-        min-width: 280px; /* Evita que se encojan demasiado */
-    }
-
-    /* Ocultar la barra de scroll para una estética más limpia (opcional) */
-    .grid-turismo::-webkit-scrollbar,
-    .grid-faq::-webkit-scrollbar {
-        display: none;
-    }
-}
-
-/* --- Indicador de Deslizar para Celulares --- */
-@media (max-width: 768px) {
-    /* Creamos un contenedor relativo para las secciones de scroll */
-    .grid-turismo, 
-    .grid-faq {
-        position: relative;
+    .servicios-grid {
         display: flex !important;
         overflow-x: auto !important;
         scroll-snap-type: x mandatory;
-        gap: 15px;
-        padding-bottom: 20px;
+        gap: 20px;
+        padding: 20px 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+    .servicio-item { flex: 0 0 80%; scroll-snap-align: center; min-width: 280px; }
+}
+
+/* --- Footer Social Icons --- */
+.footer-socials {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    align-items: center;
+}
+
+.footer-socials a {
+    color: white; /* Todos los iconos empiezan en blanco */
+    font-size: 1.8rem;
+    transition: transform 0.3s, color 0.3s;
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* El icono de WhatsApp ahora no tiene fondo verde, solo el icono */
+.footer-socials a i.fa-whatsapp {
+    background: none; 
+    color: white;
+}
+
+.footer-socials a:hover {
+    color: var(--verde-principal); /* Todos cambian a verde al pasar el mouse */
+    transform: translateY(-5px);
+}
+/* --- Forzar tarjetas en una sola línea con scroll --- */
+.servicios-grid {
+    display: flex !important;           /* Cambiamos de grid a flex */
+    flex-wrap: nowrap !important;      /* Evita que las tarjetas bajen */
+    overflow-x: auto !important;       /* Habilita el scroll horizontal */
+    gap: 20px;                         /* Espacio entre tarjetas */
+    padding: 20px 10px;
+    scroll-snap-type: x mandatory;     /* Efecto de "imán" al deslizar */
+    -webkit-overflow-scrolling: touch; /* Suavidad en iPhone/iPad */
+}
+
+/* Ocultar barra de scroll (opcional, para estética más limpia) */
+.servicios-grid::-webkit-scrollbar {
+    height: 6px;
+}
+.servicios-grid::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+.servicio-item {
+    flex: 0 0 280px;            /* No crecen, no se achican, base de 280px */
+    scroll-snap-align: center;  /* Alinea la tarjeta al centro al scrollear */
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: var(--sombra-suave);
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+/* --- Navegación y Menú Hamburguesa --- */
+.menu-toggle {
+    display: none; /* Oculto en PC */
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--oscuro);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Visible en móviles */
     }
 
-    /* El mensaje que aparece brevemente */
-    .grid-turismo::before,
-    .grid-faq::before {
-        content: "⟵ Desliza para ver más ⟶";
+    .nav-links {
+        display: none; /* Oculto por defecto en móvil */
+        flex-direction: column;
         position: absolute;
-        top: -25px;
-        right: 10px;
-        font-size: 0.8rem;
-        color: var(--verde-principal);
-        font-weight: bold;
-        animation: fadeOut 4s forwards; /* Desaparece tras 4 segundos */
-        pointer-events: none;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: var(--sombra-suave);
+        z-index: 1000;
     }
 
-    /* Animación de las tarjetas al posicionar el dedo (simulando hover) */
-    .grid-turismo > div:active::after,
-    .grid-faq > div:active::after {
-        content: "Desliza lateralmente";
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0,0,0,0.7);
-        color: white;
-        padding: 5px 10px;
-        border-radius: 5px;
-        font-size: 0.7rem;
-        z-index: 10;
+    .nav-links.active {
+        display: flex; /* Se muestra al activar */
+    }
+
+    .nav-btn {
+        width: 100%;
+        text-align: center;
+        padding: 15px;
     }
 }
 
-@keyframes fadeOut {
-    0% { opacity: 0; transform: translateY(5px); }
-    20% { opacity: 1; transform: translateY(0); }
-    80% { opacity: 1; }
-    100% { opacity: 0; }
+/* --- Footer Unificado (Iconos Blancos y sin Subrayado) --- */
+.footer-socials a {
+    color: white !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    font-size: 1.8rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
-.card-content h3 i, 
-.welcome-text p i,
-h1 i {
-    margin-right: 10px;
-    color: var(--verde-principal); /* O el color que prefieras resaltar */
+
+.footer-socials a:hover {
+    color: var(--verde-principal) !important;
+}
+
+/* Forzar cards en una sola línea */
+.servicios-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 20px;
+    padding: 20px 10px;
+    scroll-snap-type: x mandatory;
+}
+
+.servicio-item {
+    flex: 0 0 280px;
+    scroll-snap-align: center;
+}
+
+/* --- Estilo Base del Botón (PC) --- */
+.menu-toggle {
+    display: none; /* Oculto en computadoras */
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--oscuro);
+    cursor: pointer;
+    z-index: 1100; /* Por encima de todo */
+}
+
+/* --- Estilo para Celulares (Responsivo) --- */
+@media (max-width: 768px) {
+    .navbar {
+        position: relative; /* Necesario para posicionar el botón */
+        padding: 15px 5%;
+        min-height: 80px;
+    }
+
+    .menu-toggle {
+        display: block; /* Aparece en móviles */
+        position: absolute;
+        top: 20px;     /* Margen superior */
+        right: 20px;    /* Margen derecho */
+    }
+
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%;    /* Justo debajo de la barra blanca */
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex; /* Se muestra al tocar el icono */
+    }
+
+    .nav-btn {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Estilos para la sección de Reserva */
+.contador-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f9f9f9;
+}
+
+.contador-control button {
+    background: var(--verde-principal);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.contador-control button:hover {
+    background: var(--verde-oscuro);
+}
+
+.contador-control input {
+    width: 50px;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.btn-pago-mp {
+    background-color: #009ee3; /* Azul oficial de Mercado Pago */
+    color: white;
+    text-decoration: none !important;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 158, 227, 0.3);
+}
+
+.btn-pago-mp:hover {
+    transform: scale(1.05);
+    background-color: #007eb5;
+}
+
+/* Ocultar flechas por defecto del input number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-reserva:invalid {
+    border-color: #ff4d4d !important;
+}
+
+/* Estilo para que el botón de pago como <button> se vea igual al <a> anterior */
+.btn-pago-mp {
+    padding: 15px 30px;
+    font-size: 1rem;
+    line-height: 1;
 }
