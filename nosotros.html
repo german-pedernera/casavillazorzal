@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos - Casa Villa Zorzal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="/icons.png" type="image/x-icon">
+</head>
+<body>
+<nav class="navbar">
+    <a href="index.html" class="logo-contenedor">
+        <img src="logotipo.png" class="logo-img" alt="Logo">
+        <span class="logo-name">Casa Villa Zorzal</span>
+    </a>
+    
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+        <a href="/contacto.html" class="nav-btn">Nuestro Contacto</a>
+        <a href="interior.html" class="nav-btn">Interior</a>
+        <a href="exterior.html" class="nav-btn">Exterior</a>
+        <a href="principal.html" class="nav-btn">Inicio</a>
+    </div>
+</nav>
+    <div class="container">
+        <img src="logotipo.png" class="quienes-somos-img">
+        <h2>Nuestra Historia</h2><br>
+        <p class="texto-justificado">
+            Casa Villa Zorzal nace de un sueño profundo: crear un santuario donde el tiempo parece detenerse y la naturaleza dicta el ritmo del día. Ubicada en el místico rincón de Villa Larca, nuestra residencia no es solo un lugar de alquiler, sino una experiencia diseñada para aquellos que buscan reconectar con lo esencial. Imagina despertar con el canto del zorzal mientras los primeros rayos del sol iluminan las Sierras de los Comechingones, sintiendo la frescura de un microclima único que renueva el espíritu. Cada rincón de nuestra casa ha sido pensado para ofrecer calidez y paz, desde la solidez de sus muros hasta la apertura de sus ventanales que invitan al paisaje a pasar. Nos apasiona la hospitalidad y creemos fervientemente que el verdadero lujo reside en el silencio, el aire puro y los momentos compartidos frente a una vista inigualable. Al elegirnos, no solo alquilas una propiedad, te sumerges en el corazón de San Luis, en un refugio donde la privacidad y la belleza natural se fusionan para crear recuerdos imborrables. Te invitamos a descubrir los secretos del Chorro de San Ignacio y a dejar que la magia de Villa Larca te envuelva en un abrazo eterno de tranquilidad y armonía. ¡Bienvenidos a su hogar lejos de casa!
+        </p>
+    </div><br>
+
+    <footer>
+        <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/casavillazorzal" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/casavillazorzal" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@casavillazorzal" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="javascript:void(0)" onclick="openWhatsAppModal()"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+<div id="whatsappModal" class="modal">
+    <div class="modal-content" style="max-width: 400px; text-align: center;">
+        <span class="close" onclick="closeWhatsAppModal()">&times;</span>
+        <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 15px;"></i>
+        <h3>¿Con quién deseas hablar?</h3>
+        <p style="margin-bottom: 20px; color: #666;">Elige un contacto para iniciar el chat:</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <a href="https://wa.me/+5493513603703" target="_blank" class="btn-ingresar" style="background-color: #25d366; font-size: 1.1rem; padding: 12px;">
+                <i class="fas fa-user"></i> Chatear con Claudia
+            </a>
+            <a href="https://wa.me/+5491169534244" target="_blank" class="btn-ingresar" style="background-color: #128c7e; font-size: 1.1rem; padding: 12px;">
+                <i class="fas fa-user"></i> Chatear con German
+            </a>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

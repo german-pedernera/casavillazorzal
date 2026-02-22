@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Villa Zorzal - Villa Larca</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="/icons.png" type="image/x-icon">
+    <style>
+        html, body { overflow-x: hidden; width: 100%; margin: 0; padding: 0; }
+        .modal-text-only { text-align: left; padding: 20px; line-height: 1.8; }
+        .resena-turistica { background: #ffffff; padding: 40px 20px; border-radius: 20px; margin-bottom: 30px; box-shadow: var(--sombra-suave); }
+        .grid-dos-columnas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 900px; margin: 0 auto; }
+        .item-compacto { display: flex; align-items: center; gap: 12px; padding: 12px; background: #fff; border-radius: 12px; border: 1px solid #eee; cursor: pointer; transition: all 0.2s ease; text-align: left; }
+        .item-compacto:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); background-color: #f9f9f9; border-color: #2d5a27; }
+        .item-compacto i { font-size: 1.2rem; color: #2d5a27; min-width: 25px; text-align: center; }
+        .item-compacto h3 { font-size: 0.95rem; margin: 0; color: #333; font-weight: 600; }
+        .reserva-input-group { display: flex; flex-direction: column; text-align: left; gap: 8px; }
+        .reserva-input-group label { font-weight: 600; font-size: 0.9rem; color: var(--oscuro); }
+        .input-estilizado { padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; background: white; }
+        .pago-detalle { border-top: 1px solid #eee; margin-top: 15px; padding-top: 15px; }
+        .precio-total { font-size: 1.5rem; color: #27ae60; font-weight: bold; margin: 10px 0; }
+        .btn-mercado-pago { background-color: #009ee3; color: white; border: none; padding: 15px; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; text-align: center; margin-top: 10px; }
+        
+        .turismo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .turismo-card { cursor: pointer; }
+        .turismo-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 15px 15px 0 0; }
+        .modal-img-turismo { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
+
+        @media (max-width: 550px) { .grid-dos-columnas { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <a href="index.html" class="logo-contenedor">
+        <img src="logotipo.png" class="logo-img" alt="Logo">
+        <span class="logo-name">Casa Villa Zorzal</span>
+    </a>
+    <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    <div class="nav-links" id="navLinks">
+        <a href="nosotros.html" class="nav-btn">Quiénes Somos</a>
+        <a href="contacto.html" class="nav-btn">Nuestro Contacto</a>
+    </div>
+</nav>
+
+    <header class="hero">
+        <h1 class="single-line">Tu descanso al pie de las Sierras</h1>
+        <p>"El refugio perfecto en el corazón de San Luis"</p>
+    </header>
+
+    <section class="container">
+        <div class="resena-turistica">
+            <h2>Descubrí la Magia de Villa Larca</h2>
+            <p>Ubicada en el corredor de la Costa de los Comechingones, Villa Larca es el secreto mejor guardado de San Luis. Aquí, el microclima se combina con paisajes vírgenes y arroyos cristalinos.</p>
+        </div>
+        <div class="grid-casas">
+            <a href="exterior.html" class="card">
+                <img src="/exterior.png" alt="Exterior">
+                <div class="card-content"><h3>Exterior</h3><p>Vista directa a las sierras.</p></div>
+            </a>
+            <a href="interior.html" class="card">
+                <img src="/interior.jpg" alt="Interior">
+                <div class="card-content"><h3>Interior</h3><p>Confort total y equipamiento.</p></div>
+            </a>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Turismo Cercano</h2>
+        <p style="margin-bottom: 30px; color: #666;">Explora las bellezas naturales de la Costa de los Comechingones.</p>
+        <div class="turismo-grid">
+            <div class="card turismo-card" onclick="openTurismo('chorro')">
+                <img src="/trio.jpeg" alt="Chorro San Ignacio">
+                <div class="card-content">
+                    <h3>Chorro San Ignacio</h3>
+                    <p>Cascada natural a 2 km.</p>
+                </div>
+            </div>
+            <div class="card turismo-card" onclick="openTurismo('piscu')">
+                <img src="/trio.jpeg" alt="Dique Piscu Yaco">
+                <div class="card-content">
+                    <h3>Dique Piscu Yaco</h3>
+                    <p>Ideal para actividades náuticas.</p>
+                </div>
+            </div>
+            <div class="card turismo-card" onclick="openTurismo('papagayos')">
+                <img src="/trio.jpeg" alt="Ollas de Papagayos">
+                <div class="card-content">
+                    <h3>Ollas de Papagayos</h3>
+                    <p>Pozones de agua cristalina.</p>
+                </div>
+            </div>
+            <div class="card turismo-card" onclick="openTurismo('elena')">
+                <img src="/trio.jpeg" alt="Cascada Villa Elena">
+                <div class="card-content">
+                    <h3>Cascada Villa Elena</h3>
+                    <p>Salto de agua de 9 metros.</p>
+                </div>
+            </div>
+            <div class="card turismo-card" onclick="openTurismo('talar')">
+                <img src="/trio.jpeg" alt="Balneario El Talar">
+                <div class="card-content">
+                    <h3>Balneario El Talar</h3>
+                    <p>Oasis de aguas bajo talas.</p>
+                </div>
+            </div>
+            <div class="card turismo-card" onclick="openTurismo('pasos')">
+                <img src="/trio.jpeg" alt="Pasos Malos">
+                <div class="card-content">
+                    <h3>Pasos Malos</h3>
+                    <p>Circuito natural y gastronómico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Servicios y Comodidades</h2>
+        <div class="grid-dos-columnas">
+            <div class="item-compacto" onclick="openModal('wifi')"><i class="fas fa-wifi"></i><h3>Wi-Fi de Alta Velocidad</h3></div>
+            <div class="item-compacto" onclick="openModal('seguridad')"><i class="fas fa-shield-alt"></i><h3>Predio Monitoreado</h3></div>
+            <div class="item-compacto" onclick="openModal('cochera')"><i class="fas fa-car"></i><h3>Cochera Cubierta</h3></div>
+            <div class="item-compacto" onclick="openModal('tv')"><i class="fas fa-tv"></i><h3>Directv Full HD</h3></div>
+            <div class="item-compacto" onclick="openModal('mascotas')"><i class="fas fa-paw"></i><h3>Pet-Friendly</h3></div>
+            <div class="item-compacto" onclick="openModal('calefaccion')"><i class="fas fa-fire"></i><h3>Climatización</h3></div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Preguntas Frecuentes</h2>
+        <div class="grid-dos-columnas">
+            <div class="item-compacto" onclick="openFAQ('horarios')"><i class="fas fa-clock"></i><h3>Horarios de Ingreso</h3></div>
+            <div class="item-compacto" onclick="openFAQ('reserva')"><i class="fas fa-key"></i><h3>¿Cómo Reservar?</h3></div>
+            <div class="item-compacto" onclick="openFAQ('capacidad')"><i class="fas fa-users"></i><h3>Capacidad Máxima</h3></div>
+            <div class="item-compacto" onclick="openFAQ('ubicacion')"><i class="fas fa-map-marked-alt"></i><h3>¿Cómo llegar?</h3></div>
+            <div class="item-compacto" onclick="openFAQ('pagos')"><i class="fas fa-wallet"></i><h3>Medios de Pago</h3></div>
+        </div>
+    </section>
+
+    <section class="container" style="background: white; padding: 40px 20px; border-radius: 20px; box-shadow: var(--sombra-suave); margin-bottom: 40px;">
+        <h2>Verificar Disponibilidad Casa Villa Zorzal</h2>
+        <p style="margin-bottom: 30px; color: #666;">Completa todos los campos para verificar tu estadía.</p>
+        
+        <form id="formReserva" style="max-width: 900px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                <div class="reserva-input-group">
+                    <label><i class="fas fa-calendar-alt"></i> Entrada</label>
+                    <input type="date" id="checkin" class="input-estilizado" required onchange="calcularNoches()">
+                </div>
+                <div class="reserva-input-group">
+                    <label><i class="fas fa-calendar-check"></i> Salida</label>
+                    <input type="date" id="checkout" class="input-estilizado" required onchange="calcularNoches()">
+                </div>
+                <div class="reserva-input-group">
+                    <label>Huéspedes</label>
+                    <select id="huespedes" class="input-estilizado" required>
+                        <option value="" disabled selected>Seleccione cantidad</option>
+                        <option value="1">1 Persona</option>
+                        <option value="2">2 Personas</option>
+                        <option value="3">3 Personas</option>
+                        <option value="4">4 Personas</option>
+                        <option value="5">5 Personas</option>
+                        <option value="6">6 Personas</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                <input type="text" id="nombreReserva" placeholder="Nombre y Apellido" class="input-estilizado" required>
+                <input type="text" id="dniReserva" placeholder="DNI" class="input-estilizado" required>
+                <input type="tel" id="telReserva" placeholder="Teléfono / WhatsApp" class="input-estilizado" required>
+                <input type="email" id="emailReserva" placeholder="Correo Electrónico" class="input-estilizado" required>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <p id="infoEstadia" style="font-weight: 600; color: var(--verde-principal); margin-bottom: 15px;">Noches seleccionadas: <span id="cantNoches">0</span></p>
+                <button type="button" onclick="validarDisponibilidad()" class="btn-ingresar" style="border: none; cursor: pointer; width: 100%; max-width: 400px;">
+                    Verificar y Calcular Costo
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <footer>
+        <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/casavillazorzal" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/casavillazorzal" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@casavillazorzal" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="javascript:void(0)" onclick="openWhatsAppModal()"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <div id="generalModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getDatabase, ref, push, get, child } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA19vYMaNQO4ocC54GHsTywWT-2YQhI-ZI",
+            authDomain: "casa-villa-zorzal.firebaseapp.com",
+            projectId: "casa-villa-zorzal",
+            storageBucket: "casa-villa-zorzal.firebasestorage.app",
+            messagingSenderId: "78540182532",
+            appId: "1:78540182532:web:454937ad29cd74c4d81151"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const PRECIO_NOCHE = 65000;
+
+        const hoy = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').setAttribute('min', hoy);
+        document.getElementById('checkout').setAttribute('min', hoy);
+
+        /* --- REDEFINICIÓN DE ALERT PARA QUE USE EL MODAL --- */
+        window.alert = function(mensaje) {
+            const body = document.getElementById('modalBody');
+            body.innerHTML = `
+                <div class="modal-text-only" style="text-align: center;">
+                    <i class="fas fa-info-circle" style="font-size: 3rem; color: var(--verde-principal); margin-bottom: 15px;"></i>
+                    <p style="font-size: 1.1rem; color: #333; margin-bottom: 20px;">${mensaje}</p>
+                    <button onclick="closeModal()" class="btn-ingresar" style="width: auto; padding: 10px 40px; font-size: 1rem; border: none; cursor: pointer;">
+                        Entendido
+                    </button>
+                </div>`;
+            document.getElementById('generalModal').style.display = "block";
+            document.body.style.overflow = "hidden";
+        };
+
+        window.validarDisponibilidad = async function() {
+            const campos = ['nombreReserva', 'dniReserva', 'telReserva', 'emailReserva', 'checkin', 'checkout', 'huespedes'];
+            for(let id of campos) {
+                if(!document.getElementById(id).value) {
+                    alert("Por favor, completa todos los campos obligatorios.");
+                    return;
+                }
+            }
+
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const noches = parseInt(document.getElementById('cantNoches').innerText);
+
+            if (noches <= 0) {
+                alert("La fecha de salida debe ser posterior a la de entrada.");
+                return;
+            }
+
+            try {
+                const dbRef = ref(db);
+                const snapshot = await get(child(dbRef, `reservas`));
+                let ocupado = false;
+
+                if (snapshot.exists()) {
+                    const reservas = snapshot.val();
+                    const inicio = new Date(checkin);
+                    const fin = new Date(checkout);
+
+                    for (let id in reservas) {
+                        const r = reservas[id];
+                        const rInicio = new Date(r.checkin);
+                        const rFin = new Date(r.checkout);
+                        if ((inicio < rFin) && (fin > rInicio)) {
+                            ocupado = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (ocupado) {
+                    alert("Lo sentimos, esa fecha ya está reservada por otro cliente.");
+                } else {
+                    mostrarResumenPago(noches);
+                }
+            } catch (e) { alert("Error: " + e.message); }
+        };
+
+        function mostrarResumenPago(noches) {
+            const total = noches * PRECIO_NOCHE;
+            const sena = total * 0.40;
+            const body = document.getElementById('modalBody');
+            body.innerHTML = `
+                <div class="modal-text-only">
+                    <h3>Estadía Disponible</h3>
+                    <p>Has seleccionado <strong>${noches} noches</strong>.</p>
+                    <div class="pago-detalle">
+                        <p>Precio por noche: $${PRECIO_NOCHE.toLocaleString()}</p>
+                        <p>Total de las noches: $${total.toLocaleString()}</p>
+                        <p class="precio-total">Reserva de hospedaje (40%): $${sena.toLocaleString()}</p>
+                        <p style="color: #666; font-size: 0.9rem;">Para confirmar tu reserva pendiente, procede al pago de la reserva de hospedaje con el 40% del total de noches a hospedarse o total de las noches.</p>
+                        
+                        <button onclick="confirmarReservaFirebase()" class="btn-ingresar" style="width:100%; margin-top:10px; background:#27ae60; border:none; cursor:pointer;">
+                            Confirmar Solicitud de Reserva
+                        </button>
+                        
+                        <button onclick="closeModal()" class="btn-ingresar" style="width:100%; margin-top:10px; background:#888; border:none; cursor:pointer; font-size: 1rem; padding: 12px;">
+                            <i class="fas fa-arrow-left"></i> Volver atrás
+                        </button>
+                    </div>
+                </div>`;
+            document.getElementById('generalModal').style.display = "block";
+        }
+
+        window.confirmarReservaFirebase = async function() {
+            const datos = {
+                nombre: document.getElementById('nombreReserva').value,
+                dni: document.getElementById('dniReserva').value,
+                tel: document.getElementById('telReserva').value,
+                email: document.getElementById('emailReserva').value,
+                checkin: document.getElementById('checkin').value,
+                checkout: document.getElementById('checkout').value,
+                pax: document.getElementById('huespedes').value,
+                noches: document.getElementById('cantNoches').innerText,
+                estado: 'Pendiente a Confirmar',
+                fechaRegistro: new Date().toISOString()
+            };
+
+            try {
+                await push(ref(db, 'reservas'), datos);
+                const body = document.getElementById('modalBody');
+                body.innerHTML = `
+                    <div class="modal-text-only" style="text-align: center;">
+                        <i class="fas fa-check-circle" style="font-size: 3rem; color: #27ae60; margin-bottom: 15px;"></i>
+                        <h3>¡Solicitud enviada con éxito!</h3>
+                        <p>Tu reserva quedó registrada como <strong>Pendiente a Confirmar</strong>.</p>
+                        <p>Procede ahora al pago seguro para congelar tu fecha:</p>
+                        <a href="https://link.mercadopago.com.ar/tiendaelectromania" target="_blank" class="btn-mercado-pago">
+                            Pagar con Mercado Pago
+                        </a>
+                        <p style="margin-top: 15px; font-size: 0.95rem; color: #27ae60; font-weight: bold;">
+                            Una vez realizado el pago, envía el comprobante por WhatsApp a Claudia ó German para terminar de <u>CONFIRMAR</u> el pago.
+                        </p>
+                        
+                        <button onclick="closeModal()" class="btn-ingresar" style="width:100%; margin-top:20px; background:#888; border:none; cursor:pointer; font-size: 1rem; padding: 12px;">
+                            Cerrar y Volver
+                        </button>
+                    </div>`;
+            } catch (e) {
+                alert("Error al guardar reserva: " + e.message);
+            }
+        };
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

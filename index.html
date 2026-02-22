@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenidos - Casa Villa Zorzal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="/icons.png" type="image/x-icon">
+    <style>
+        body { overflow: hidden; margin: 0; }
+        .welcome-wrapper {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .welcome-logo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            box-shadow: var(--sombra-fuerte);
+            margin-bottom: 30px;
+            object-fit: cover;
+            animation: entradaSuave 1.5s ease-out, flotar 3s ease-in-out infinite;
+        }
+        .welcome-text { width: 100%; max-width: 900px; margin-bottom: 40px; }
+        .welcome-text h1 {
+            color: var(--oscuro);
+            font-size: clamp(1.5rem, 4.5vw, 3.5rem); 
+            margin-bottom: 15px;
+            font-weight: 700;
+            white-space: nowrap; 
+            overflow: hidden;
+        }
+        .btn-ingresar {
+            padding: 18px 50px;
+            background-color: var(--verde-principal);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--sombra-suave);
+        }
+        .btn-ingresar:hover { transform: scale(1.1); background-color: var(--verde-oscuro); }
+        @keyframes entradaSuave {
+            0% { opacity: 0; transform: scale(0.5) translateY(-50px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-wrapper">
+        <img src="logotipo.png" alt="Logo Casa Villa Zorzal" class="welcome-logo">
+        <div class="welcome-text">
+            <h1>Bienvenidos a Casa Villa Zorzal</h1>
+            <p>
+                <i class="fas fa-leaf" style="color: var(--verde-principal); margin-right: 8px;"></i>
+                <b>Tu refugio de paz al pie de las Sierras de los Comechingones.</b>
+            </p>
+        </div>
+        <a href="/principal.html" class="btn-ingresar">Ingresar al Sitio Web</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Casa Villa Zorzal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="/icons.png" type="image/x-icon">
+</head>
+<body>
+<nav class="navbar">
+    <a href="index.html" class="logo-contenedor">
+        <img src="logotipo.png" class="logo-img" alt="Logo">
+        <span class="logo-name">Casa Villa Zorzal</span>
+    </a>
+    
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+        <a href="/nosotros.html" class="nav-btn">Quienes Somos</a>
+        <a href="interior.html" class="nav-btn">Interior</a>
+        <a href="exterior.html" class="nav-btn">Exterior</a>
+        <a href="principal.html" class="nav-btn">Inicio</a>
+    </div>
+</nav>
+
+    <div class="container">
+        <h1>Ubicación y Contacto</h1>
+        
+        <div style="margin-bottom: 40px;">
+            <p style="margin-bottom: 20px; color: #666;">
+    <i class="fas fa-comment-dots"></i> 
+    <b>Haz clic en los botones para chatear directamente con nosotros:</b>
+</p>
+            <a href="https://wa.me/5491169534244" class="btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Contactar a Germán
+            </a>
+            <a href="https://wa.me/5493513603703" class="btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Contactar a Claudia
+            </a>
+        </div>
+        
+        <div style="box-shadow: var(--sombra-suave); border-radius: 15px; overflow: hidden; margin-bottom: 40px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3360.6725124850695!2d-64.98121632532953!3d-32.61490985520902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d25750e4bcefa5%3A0x159d51fcf838df77!2sCasa%20Villa%20Zorzal!5e0!3m2!1ses-419!2sar!4v1768440485270!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="servicios-grid">
+            <div class="servicio-item" style="cursor: default;">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Ubicación</h3>
+                <p>Sobremonte, Tradición Norte, Belgrano Nte., D5883 Villa Larca, San Luis                              A 3 cuadras de la Ruta Provincial 1. A 3 cuadras del ingreso principal.</p>
+            </div>
+            
+
+
+            <div class="servicio-item" style="cursor: default;">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>casavillazorzal@gmail.com</p>
+            </div>
+
+            <div class="servicio-item" style="cursor: default;">
+                <i class="fas fa-map-pin"></i>
+                <h3>Código Postal</h3>
+                <p>D5883 - Villa Larca  - Provincia de San Luis, Argentina.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/casavillazorzal" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/casavillazorzal" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@casavillazorzal" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="javascript:void(0)" onclick="openWhatsAppModal()"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+<div id="whatsappModal" class="modal">
+    <div class="modal-content" style="max-width: 400px; text-align: center;">
+        <span class="close" onclick="closeWhatsAppModal()">&times;</span>
+        <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 15px;"></i>
+        <h3>¿Con quién deseas hablar?</h3>
+        <p style="margin-bottom: 20px; color: #666;">Elige un contacto para iniciar el chat:</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <a href="https://wa.me/+5493513603703" target="_blank" class="btn-ingresar" style="background-color: #25d366; font-size: 1.1rem; padding: 12px;">
+                <i class="fas fa-user"></i> Chatear con Claudia
+            </a>
+            <a href="https://wa.me/+5491169534244" target="_blank" class="btn-ingresar" style="background-color: #128c7e; font-size: 1.1rem; padding: 12px;">
+                <i class="fas fa-user"></i> Chatear con German
+            </a>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
