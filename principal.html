@@ -23,10 +23,9 @@
         .reserva-input-group { display: flex; flex-direction: column; text-align: left; gap: 8px; }
         .reserva-input-group label { font-weight: 600; font-size: 0.9rem; color: var(--oscuro); }
         .input-estilizado { padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; background: white; }
-        .pago-detalle { border-top: 1px solid #eee; margin-top: 15px; padding-top: 15px; }
-        .precio-total { font-size: 1.5rem; color: #27ae60; font-weight: bold; margin: 10px 0; }
         .btn-mercado-pago { background-color: #009ee3; color: white; border: none; padding: 15px; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; text-align: center; margin-top: 10px; }
         
+        /* Estilos para Turismo */
         .turismo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
         .turismo-card { cursor: pointer; }
         .turismo-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 15px 15px 0 0; }
@@ -101,7 +100,7 @@
     </section>
 
     <section class="container">
-        <h2>Servicios y Comodidades</h2>
+        <h2 style="margin-bottom: 30px;">Servicios y Comodidades</h2>
         <div class="grid-dos-columnas">
             <div class="item-compacto" onclick="openModal('wifi')"><i class="fas fa-wifi"></i><h3>Wi-Fi de Alta Velocidad</h3></div>
             <div class="item-compacto" onclick="openModal('seguridad')"><i class="fas fa-shield-alt"></i><h3>Predio Monitoreado</h3></div>
@@ -113,7 +112,7 @@
     </section>
 
     <section class="container">
-        <h2>Preguntas Frecuentes</h2>
+        <h2 style="margin-bottom: 30px;">Preguntas Frecuentes</h2>
         <div class="grid-dos-columnas">
             <div class="item-compacto" onclick="openFAQ('horarios')"><i class="fas fa-clock"></i><h3>Horarios de Ingreso</h3></div>
             <div class="item-compacto" onclick="openFAQ('reserva')"><i class="fas fa-key"></i><h3>¿Cómo Reservar?</h3></div>
@@ -129,16 +128,16 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 25px;">
                 <div class="reserva-input-group">
                     <label><i class="fas fa-calendar-alt"></i> Entrada</label>
-                    <input type="text" id="checkin" class="input-estilizado" placeholder="Seleccionar fecha" required>
+                    <input type="text" id="checkin" class="input-estilizado" placeholder="Seleccionar fecha" required readonly>
                 </div>
                 <div class="reserva-input-group">
                     <label><i class="fas fa-calendar-check"></i> Salida</label>
-                    <input type="text" id="checkout" class="input-estilizado" placeholder="Seleccionar fecha" required>
+                    <input type="text" id="checkout" class="input-estilizado" placeholder="Seleccionar fecha" required readonly>
                 </div>
                 <div class="reserva-input-group">
                     <label>Huéspedes</label>
                     <select id="huespedes" class="input-estilizado" required>
-                        <option value="" disabled selected>Seleccione cantidad</option>
+                        <option value="" disabled selected>Cantidad</option>
                         <option value="1">1 Persona</option>
                         <option value="2">2 Personas</option>
                         <option value="3">3 Personas</option>
@@ -152,8 +151,8 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 25px;">
                 <input type="text" id="nombreReserva" placeholder="Nombre y Apellido" class="input-estilizado" required>
                 <input type="text" id="dniReserva" placeholder="DNI" class="input-estilizado" required>
-                <input type="tel" id="telReserva" placeholder="Teléfono / WhatsApp" class="input-estilizado" required>
-                <input type="email" id="emailReserva" placeholder="Correo Electrónico" class="input-estilizado" required>
+                <input type="tel" id="telReserva" placeholder="WhatsApp" class="input-estilizado" required>
+                <input type="email" id="emailReserva" placeholder="Email" class="input-estilizado" required>
             </div>
 
             <div style="margin-top: 20px;">
@@ -179,23 +178,6 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <div id="modalBody"></div>
-        </div>
-    </div>
-
-    <div id="whatsappModal" class="modal">
-        <div class="modal-content" style="max-width: 400px; text-align: center;">
-            <span class="close" onclick="closeWhatsAppModal()">×</span>
-            <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 15px;"></i>
-            <h3>¿Con quién deseas hablar?</h3>
-            <p style="margin-bottom: 20px; color: #666;">Elige un contacto para iniciar el chat:</p>
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <a href="https://wa.me/+5493513603703" target="_blank" class="btn-ingresar" style="background-color: #25d366; font-size: 1.1rem; padding: 12px;">
-                    <i class="fas fa-user"></i> Chatear con Claudia
-                </a>
-                <a href="https://wa.me/+5491169534244" target="_blank" class="btn-ingresar" style="background-color: #128c7e; font-size: 1.1rem; padding: 12px;">
-                    <i class="fas fa-user"></i> Chatear con German
-                </a>
-            </div>
         </div>
     </div>
 
@@ -226,12 +208,12 @@
             const dbRef = ref(db);
             try {
                 const snapshot = await get(child(dbRef, `reservas`));
+                rangosBloqueados = [];
                 if (snapshot.exists()) {
                     const reservas = Object.values(snapshot.val());
-                    rangosBloqueados = reservas.map(r => ({
-                        from: r.checkin,
-                        to: new Date(new Date(r.checkout).getTime() - 86400000).toISOString().split('T')[0] 
-                    }));
+                    reservas.forEach(r => {
+                        rangosBloqueados.push({ from: r.checkin, to: r.checkout });
+                    });
                 }
                 inicializarFlatpickr();
             } catch (error) {
@@ -241,11 +223,11 @@
         }
 
         function inicializarFlatpickr() {
+            if (flatpickrIn) flatpickrIn.destroy();
+            if (flatpickrOut) flatpickrOut.destroy();
+
             flatpickrIn = flatpickr("#checkin", {
-                locale: "es",
-                minDate: "today",
-                disable: rangosBloqueados,
-                dateFormat: "Y-m-d",
+                locale: "es", minDate: "today", disable: rangosBloqueados, dateFormat: "Y-m-d",
                 onChange: function(selectedDates) {
                     flatpickrOut.set("minDate", selectedDates[0].fp_incr(1));
                     calcularNoches();
@@ -253,117 +235,150 @@
             });
 
             flatpickrOut = flatpickr("#checkout", {
-                locale: "es",
-                minDate: "today",
-                disable: rangosBloqueados,
-                dateFormat: "Y-m-d",
-                onChange: function() {
-                    calcularNoches();
-                }
+                locale: "es", minDate: "today", disable: rangosBloqueados, dateFormat: "Y-m-d",
+                onChange: function() { calcularNoches(); }
             });
         }
 
         cargarYConfigurarCalendario();
 
-        window.alert = function(mensaje) {
-            const body = document.getElementById('modalBody');
-            body.innerHTML = `
-                <div class="modal-text-only" style="text-align: center;">
-                    <i class="fas fa-info-circle" style="font-size: 3rem; color: var(--verde-principal); margin-bottom: 15px;"></i>
-                    <p style="font-size: 1.1rem; color: #333; margin-bottom: 20px;">${mensaje}</p>
-                    <button onclick="closeModal()" class="btn-ingresar" style="width: auto; padding: 10px 40px; font-size: 1rem; border: none; cursor: pointer;">
-                        Entendido
-                    </button>
-                </div>`;
-            document.getElementById('generalModal').style.display = "block";
-            document.body.style.overflow = "hidden";
-        };
-
-        window.calcularNoches = function() {
+        window.validarDisponibilidad = async function() {
             const checkin = document.getElementById('checkin').value;
             const checkout = document.getElementById('checkout').value;
-            const nochesDisplay = document.getElementById('cantNoches');
-            if (checkin && checkout) {
-                const fechaEntrada = new Date(checkin);
-                const fechaSalida = new Date(checkout);
-                const diferencia = fechaSalida - fechaEntrada;
-                const noches = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
-                nochesDisplay.innerText = noches > 0 ? noches : 0;
-            }
-        };
-
-        window.validarDisponibilidad = async function() {
+            
             const campos = ['nombreReserva', 'dniReserva', 'telReserva', 'emailReserva', 'checkin', 'checkout', 'huespedes'];
-            for(let id of campos) {
-                if(!document.getElementById(id).value) {
-                    alert("Por favor, completa todos los campos obligatorios.");
-                    return;
-                }
-            }
-            const noches = parseInt(document.getElementById('cantNoches').innerText);
-            if (noches > 0) {
-                mostrarResumenPago(noches);
-            }
-        };
+            for(let id of campos) { if(!document.getElementById(id).value) { alert("Completa todos los campos."); return; } }
 
-        function mostrarResumenPago(noches) {
-            const total = noches * PRECIO_NOCHE;
-            const sena = total * 0.40;
-            const body = document.getElementById('modalBody');
-            body.innerHTML = `
-                <div class="modal-text-only">
-                    <h3>Estadía Disponible</h3>
-                    <p>Has seleccionado <strong>${noches} noches</strong>.</p>
-                    <div class="pago-detalle">
-                        <p>Precio por noche: $${PRECIO_NOCHE.toLocaleString()}</p>
-                        <p>Total de las noches: $${total.toLocaleString()}</p>
-                        <p class="precio-total">Reserva de hospedaje (40%): $${sena.toLocaleString()}</p>
-                        <button onclick="confirmarReservaFirebase()" class="btn-ingresar" style="width:100%; margin-top:10px; background:#27ae60; border:none; cursor:pointer;">
-                            Confirmar Solicitud de Reserva
-                        </button>
-                        <button onclick="closeModal()" class="btn-ingresar" style="width:100%; margin-top:10px; background:#888; border:none; cursor:pointer; font-size: 1rem; padding: 12px;">
-                            <i class="fas fa-arrow-left"></i> Volver atrás
-                        </button>
-                    </div>
-                </div>`;
-            document.getElementById('generalModal').style.display = "block";
+            const estaOcupado = rangosBloqueados.some(rango => {
+                const fIn = new Date(checkin); const fOut = new Date(checkout);
+                const rIn = new Date(rango.from); const rOut = new Date(rango.to);
+                return (fIn <= rOut && fOut >= rIn);
+            });
+
+            if (estaOcupado) { alert("Fechas no disponibles."); cargarYConfigurarCalendario(); return; }
+            
+            mostrarResumenPago(parseInt(document.getElementById('cantNoches').innerText));
+        };
+        // --- DENTRO DEL SCRIPT MODULE DE principal.html ---
+
+/* Definición de constantes y funciones de utilidad */
+
+// Función personalizada para mostrar alertas en el modal del sitio
+window.alert = function(mensaje) {
+    const body = document.getElementById('modalBody');
+    body.innerHTML = `
+        <div class="modal-text-only" style="text-align: center;">
+            <i class="fas fa-info-circle" style="font-size: 3rem; color: var(--verde-principal); margin-bottom: 15px;"></i>
+            <p style="font-size: 1.1rem; color: #333; margin-bottom: 20px;">${mensaje}</p>
+            <button onclick="closeModal()" class="btn-ingresar" style="width: auto; padding: 10px 40px; font-size: 1rem; border: none; cursor: pointer;">
+                Entendido
+            </button>
+        </div>`;
+    document.getElementById('generalModal').style.display = "block";
+    document.body.style.overflow = "hidden";
+};
+
+// 1. VALIDACIÓN INICIAL Y CÁLCULO
+window.validarDisponibilidad = async function() {
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    
+    // Verificar campos obligatorios
+    const campos = ['nombreReserva', 'dniReserva', 'telReserva', 'emailReserva', 'checkin', 'checkout', 'huespedes'];
+    for(let id of campos) {
+        if(!document.getElementById(id).value) {
+            alert("Por favor, completa todos los campos obligatorios.");
+            return;
         }
+    }
 
-        window.confirmarReservaFirebase = async function() {
-            const datos = {
-                nombre: document.getElementById('nombreReserva').value,
-                dni: document.getElementById('dniReserva').value,
-                tel: document.getElementById('telReserva').value,
-                email: document.getElementById('emailReserva').value,
-                checkin: document.getElementById('checkin').value,
-                checkout: document.getElementById('checkout').value,
-                pax: document.getElementById('huespedes').value,
-                noches: document.getElementById('cantNoches').innerText,
-                estado: 'Pendiente a Confirmar',
-                fechaRegistro: new Date().toISOString()
-            };
-            try {
-                await push(ref(db, 'reservas'), datos);
-                const body = document.getElementById('modalBody');
-                body.innerHTML = `
-                    <div class="modal-text-only" style="text-align: center;">
-                        <i class="fas fa-check-circle" style="font-size: 3rem; color: #27ae60; margin-bottom: 15px;"></i>
-                        <h3>¡Solicitud enviada con éxito!</h3>
-                        <p>Tu reserva quedó registrada como <strong>Pendiente a Confirmar</strong>.</p>
-                        <a href="https://link.mercadopago.com.ar/tiendaelectromania" target="_blank" class="btn-mercado-pago">
-                            Pagar con Mercado Pago
-                        </a>
-                        <button onclick="closeModal()" class="btn-ingresar" style="width:100%; margin-top:20px; background:#888; border:none; cursor:pointer; font-size: 1rem; padding: 12px;">
-                            Cerrar y Volver
-                        </button>
-                    </div>`;
-                cargarYConfigurarCalendario();
-                document.getElementById('formReserva').reset();
-                document.getElementById('cantNoches').innerText = "0";
-            } catch (e) {
-                alert("Error al guardar reserva: " + e.message);
-            }
-        };
+    // Verificación de disponibilidad real contra los rangos de Firebase
+    const estaOcupado = rangosBloqueados.some(rango => {
+        const fIn = new Date(checkin);
+        const fOut = new Date(checkout);
+        const rIn = new Date(rango.from);
+        const rOut = new Date(rango.to);
+        return (fIn < rOut && fOut > rIn);
+    });
+
+    if (estaOcupado) {
+        alert("Lo sentimos, las fechas seleccionadas ya no están disponibles. El calendario se actualizará.");
+        cargarYConfigurarCalendario();
+        return;
+    }
+
+    const noches = parseInt(document.getElementById('cantNoches').innerText);
+    if (noches > 0) {
+        mostrarResumenPago(noches);
+    }
+};
+
+// 2. MOSTRAR RESUMEN DE COSTOS (FUNCIONALIDAD ANTERIOR)
+function mostrarResumenPago(noches) {
+    const total = noches * PRECIO_NOCHE;
+    const sena = total * 0.40;
+    const body = document.getElementById('modalBody');
+    
+    body.innerHTML = `
+        <div class="modal-text-only">
+            <h3>Estadía Disponible</h3>
+            <p>Has seleccionado <strong>${noches} noches</strong>.</p>
+            <div class="pago-detalle" style="border-top: 1px solid #eee; margin-top: 15px; padding-top: 15px;">
+                <p>Precio por noche: $${PRECIO_NOCHE.toLocaleString()}</p>
+                <p>Total de la estadía: $${total.toLocaleString()}</p>
+                <p class="precio-total" style="font-size: 1.5rem; color: #27ae60; font-weight: bold; margin: 10px 0;">
+                    Reserva de hospedaje (40%): $${sena.toLocaleString()}
+                </p>
+                <button onclick="confirmarReservaFirebase()" class="btn-ingresar" style="width:100%; margin-top:10px; background:#27ae60; border:none; cursor:pointer;">
+                    Confirmar Solicitud de Reserva
+                </button>
+                <button onclick="closeModal()" class="btn-ingresar" style="width:100%; margin-top:10px; background:#888; border:none; cursor:pointer; font-size: 1rem; padding: 12px;">
+                    <i class="fas fa-arrow-left"></i> Volver atrás
+                </button>
+            </div>
+        </div>`;
+    document.getElementById('generalModal').style.display = "block";
+}
+
+// 3. GUARDADO EN FIREBASE Y PAGO (FUNCIONALIDAD ANTERIOR)
+window.confirmarReservaFirebase = async function() {
+    const datos = {
+        nombre: document.getElementById('nombreReserva').value,
+        dni: document.getElementById('dniReserva').value,
+        tel: document.getElementById('telReserva').value,
+        email: document.getElementById('emailReserva').value,
+        checkin: document.getElementById('checkin').value,
+        checkout: document.getElementById('checkout').value,
+        pax: document.getElementById('huespedes').value,
+        noches: document.getElementById('cantNoches').innerText,
+        estado: 'Pendiente a Confirmar',
+        fechaRegistro: new Date().toISOString()
+    };
+
+    try {
+        await push(ref(db, 'reservas'), datos);
+        const body = document.getElementById('modalBody');
+        body.innerHTML = `
+            <div class="modal-text-only" style="text-align: center;">
+                <i class="fas fa-check-circle" style="font-size: 3rem; color: #27ae60; margin-bottom: 15px;"></i>
+                <h3>¡Solicitud enviada con éxito!</h3>
+                <p>Tu reserva para <b>Casa Villa Zorzal</b> quedó registrada como <strong>Pendiente</strong>.</p>
+                <a href="https://link.mercadopago.com.ar/tiendaelectromania" target="_blank" class="btn-mercado-pago">
+                    Pagar Seña con Mercado Pago
+                </a>
+                <button onclick="closeModal()" class="btn-ingresar" style="width:100%; margin-top:20px; background:#888; border:none; cursor:pointer; font-size: 1rem; padding: 12px;">
+                    Cerrar y Volver
+                </button>
+            </div>`;
+        
+        // Actualizar el calendario localmente sin recargar la página
+        cargarYConfigurarCalendario();
+        document.getElementById('formReserva').reset();
+        document.getElementById('cantNoches').innerText = "0";
+    } catch (e) {
+        alert("Error al procesar la reserva: " + e.message);
+    }
+};
     </script>
     <script src="script.js"></script>
 </body>
