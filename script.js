@@ -263,3 +263,24 @@ function validarYEnviarReserva() {
     document.getElementById('formReserva').reset();
     document.getElementById('cantNoches').innerText = "0";
 }
+/* --- FUNCIONES DE TELEGRAM --- */
+function openTelegramModal() {
+    document.getElementById('telegramModal').style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+function closeTelegramModal() {
+    document.getElementById('telegramModal').style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+/* --- ACTUALIZACIÓN DEL CIERRE AL HACER CLIC FUERA --- */
+window.onclick = function(event) {
+    const wsModal = document.getElementById('whatsappModal');
+    const tgModal = document.getElementById('telegramModal');
+    const generalModal = document.getElementById('generalModal');
+    
+    if (event.target == wsModal) closeWhatsAppModal();
+    if (event.target == tgModal) closeTelegramModal();
+    if (event.target == generalModal) closeModal();
+}

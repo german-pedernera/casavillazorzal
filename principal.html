@@ -55,7 +55,7 @@
     <section class="container">
         <div class="resena-turistica">
             <h2>Descubrí la Magia de Villa Larca</h2>
-            <p>Ubicada en el corredor de la Costa de los Comechingones, Villa Larca es el secreto mejor guardado de San Luis. Aquí, el microclima se combina con paisajes vírgenes y arroyos cristalinos.</p>
+            <p>Ubicada en el corredor de la Costa de los Comechingones, Villa Larca es el secreto mejor guardado de San Luis. Aquí, el microclima se combina con paisajes vírgenes y arroyos cristalinos, ofreciendo un refugio natural incomparable, ideal para quienes buscan tranquilidad y contacto con la naturaleza.</p>
         </div>
         <div class="grid-casas">
             <a href="exterior.html" class="card">
@@ -71,6 +71,7 @@
 
     <section class="container">
         <h2>Turismo Cercano</h2>
+        <p>Explora los encantos naturales y culturales que rodean Villa Larca.</p>
         <div class="turismo-grid">
             <div class="card turismo-card" onclick="openTurismo('chorro')">
                 <img src="/trio.jpeg" alt="Chorro San Ignacio">
@@ -101,6 +102,7 @@
 
     <section class="container">
         <h2 style="margin-bottom: 30px;">Servicios y Comodidades</h2>
+        <p>Disfrutá de todas las comodidades que Casa Villa Zorzal tiene para ofrecer.</p>
         <div class="grid-dos-columnas">
             <div class="item-compacto" onclick="openModal('wifi')"><i class="fas fa-wifi"></i><h3>Wi-Fi de Alta Velocidad</h3></div>
             <div class="item-compacto" onclick="openModal('seguridad')"><i class="fas fa-shield-alt"></i><h3>Predio Monitoreado</h3></div>
@@ -113,6 +115,7 @@
 
     <section class="container">
         <h2 style="margin-bottom: 30px;">Preguntas Frecuentes</h2>
+        <p>Encuentra respuestas a las preguntas más comunes sobre Casa Villa Zorzal.</p>
         <div class="grid-dos-columnas">
             <div class="item-compacto" onclick="openFAQ('horarios')"><i class="fas fa-clock"></i><h3>Horarios de Ingreso</h3></div>
             <div class="item-compacto" onclick="openFAQ('reserva')"><i class="fas fa-key"></i><h3>¿Cómo Reservar?</h3></div>
@@ -123,7 +126,8 @@
     </section>
 
     <section class="container" style="background: white; padding: 40px 20px; border-radius: 20px; box-shadow: var(--sombra-suave); margin-bottom: 40px;">
-        <h2>Verificar Disponibilidad Casa Villa Zorzal</h2>
+        <h2>Verificar Disponibilidad Casa Villa Zorzal</h2><br>
+        <p>Completa el formulario a continuación para verificar la disponibilidad y calcular el costo de tu estadía.</p><br>
         <form id="formReserva" style="max-width: 900px; margin: 0 auto;">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 25px;">
                 <div class="reserva-input-group">
@@ -164,22 +168,39 @@
         </form>
     </section>
 
-    <footer>
-        <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
-        <div class="footer-socials">
-            <a href="https://www.instagram.com/casavillazorzal" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/casavillazorzal" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.tiktok.com/@casavillazorzal" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="javascript:void(0)" onclick="openWhatsAppModal()"><i class="fab fa-whatsapp"></i></a>
-        </div>
-    </footer>
-
     <div id="generalModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <div id="modalBody"></div>
         </div>
     </div>
+            <div id="whatsappModal" class="modal">
+            <div class="modal-content" style="max-width: 400px; text-align: center;">
+                <span class="close" onclick="closeWhatsAppModal()">&times;</span>
+                <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 15px;"></i>
+                <h3>¿Con quién deseas hablar?</h3>
+                <p style="margin-bottom: 20px; color: #666;">Elige un contacto para iniciar el chat:</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <a href="https://wa.me/+5493513603703" target="_blank" class="btn-ingresar" style="background-color: #25d366; font-size: 1.1rem; padding: 12px;">
+                        <i class="fas fa-user"></i> Chatear con Claudia
+                    </a>
+                    <a href="https://wa.me/+5491169534244" target="_blank" class="btn-ingresar" style="background-color: #128c7e; font-size: 1.1rem; padding: 12px;">
+                        <i class="fas fa-user"></i> Chatear con German
+                    </a>
+                </div>
+            </div>
+        </div>
+            <footer>
+        <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/casavillazorzal" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/casavillazorzal" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@casavillazorzal" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="javascript:void(0)" onclick="openWhatsAppModal()"><i class="fab fa-whatsapp"></i></a>
+            <a href="javascript:void(0)" onclick="openTelegramModal()"><i class="fab fa-telegram"></i></a>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>

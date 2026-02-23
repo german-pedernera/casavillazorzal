@@ -34,6 +34,41 @@
         </p>
     </div><br>
 
+    <div id="whatsappModal" class="modal">
+        <div class="modal-content" style="max-width: 400px; text-align: center;">
+            <span class="close" onclick="closeWhatsAppModal()">&times;</span>
+            <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 15px;"></i>
+            <h3>¿Con quién deseas hablar?</h3>
+            <p style="margin-bottom: 20px; color: #666;">Elige un contacto para iniciar el chat:</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <a href="https://wa.me/+5493513603703" target="_blank" class="btn-ingresar" style="background-color: #25d366; font-size: 1.1rem; padding: 12px;">
+                    <i class="fas fa-user"></i> Chatear con Claudia
+                </a>
+                <a href="https://wa.me/+5491169534244" target="_blank" class="btn-ingresar" style="background-color: #128c7e; font-size: 1.1rem; padding: 12px;">
+                    <i class="fas fa-user"></i> Chatear con German
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="telegramModal" class="modal">
+        <div class="modal-content" style="max-width: 400px; text-align: center;">
+            <span class="close" onclick="closeTelegramModal()">×</span>
+            <i class="fab fa-telegram" style="font-size: 3rem; color: #0088cc; margin-bottom: 15px;"></i>
+            <h3>¿Con quién deseas hablar por Telegram?</h3>
+            <p style="margin-bottom: 20px; color: #666;">Elige un contacto para iniciar el chat:</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <a href="https://t.me/UsuarioTelegramClaudia" target="_blank" class="btn-ingresar" style="background-color: #0088cc; font-size: 1.1rem; padding: 12px;">
+                    <i class="fas fa-user"></i> Chatear con Claudia
+                </a>
+                <a href="https://t.me/GermanRamirez" target="_blank" class="btn-ingresar" style="background-color: #0077b5; font-size: 1.1rem; padding: 12px;">
+                    <i class="fas fa-user"></i> Chatear con German
+                </a>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>Casa Villa Zorzal - Villa Larca, San Luis</p>
         <div class="footer-socials">
@@ -41,26 +76,9 @@
             <a href="https://www.facebook.com/casavillazorzal" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="https://www.tiktok.com/@casavillazorzal" target="_blank"><i class="fab fa-tiktok"></i></a>
             <a href="javascript:void(0)" onclick="openWhatsAppModal()"><i class="fab fa-whatsapp"></i></a>
+            <a href="javascript:void(0)" onclick="openTelegramModal()"><i class="fab fa-telegram"></i></a>
         </div>
     </footer>
-
-<div id="whatsappModal" class="modal">
-    <div class="modal-content" style="max-width: 400px; text-align: center;">
-        <span class="close" onclick="closeWhatsAppModal()">&times;</span>
-        <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366; margin-bottom: 15px;"></i>
-        <h3>¿Con quién deseas hablar?</h3>
-        <p style="margin-bottom: 20px; color: #666;">Elige un contacto para iniciar el chat:</p>
-        
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-            <a href="https://wa.me/+5493513603703" target="_blank" class="btn-ingresar" style="background-color: #25d366; font-size: 1.1rem; padding: 12px;">
-                <i class="fas fa-user"></i> Chatear con Claudia
-            </a>
-            <a href="https://wa.me/+5491169534244" target="_blank" class="btn-ingresar" style="background-color: #128c7e; font-size: 1.1rem; padding: 12px;">
-                <i class="fas fa-user"></i> Chatear con German
-            </a>
-        </div>
-    </div>
-</div>
     <script src="script.js"></script>
 </body>
 </html>
